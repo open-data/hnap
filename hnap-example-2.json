@@ -1,0 +1,82 @@
+{
+    "type": "geo",
+
+    "id": "8ce09a25-eda6-4d51-8704-69d2a451ca33",
+    "parent_id": null,
+    "hierarchy_level": "dataset",
+    "url": null,
+    "title": {
+        "en": "Elections - Federal Electoral Districts - Canada 2013",
+        "fr": "Élections - Circonscriptions fédérales - Canada 2013",
+    },
+
+    "date_published": null,
+    "date_modified": null,
+    "digital_object_identifier": null,
+    "individual_name": null,
+    "position_name": {
+        "en": null,
+        "fr": null
+    }
+
+    "owner_org": "elections",
+
+    "reference_system": "EPSG:4617",
+
+    "responsible_organization": {
+        "en": "Government of Canada; Elections Canada; Electoral Geography Division",
+        "fr": "Gouvernement du Canada; Élections Canada; Division de la géographie électorale"
+    },
+    "notes": {
+        "en": "Canada is divided into 338 electoral districts. A representative or member of Parliament is elected for each electoral district. Following the release of population counts from each decennial census, the Chief Electoral Officer determines the number of seats in the House of Commons and publishes the information in the Canada Gazette. Electoral boundaries commissions then determine the adjustments to the constituency boundaries.  The federal electoral boundaries commissions are independent bodies that make all decisions regarding the proposed and final federal electoral boundaries. Elections Canada provides support services to the boundaries commission in each province. Based on reports from these commissions, the Chief Electoral Officer prepares a representation order that describes the boundaries and specifies the name and the population of each FED. The representation order is in force on the first dissolution of Parliament that occurs at least seven months after its proclamation. The 2013 Representation Order (proclaimed on October 5, 2013) was based on 2011 Census population counts, and increased the number of FEDs to 338, up from 308 from the previous 2003 Representation Order. Ontario received fifteen additional seats, Alberta and British Columbia each gained six seats while Quebec added three seats. On June 19, 2014, the Riding Name Change Act, 2014 (Bill C-37) received Royal Assent changing the names of 31 FEDs. The names of FEDs may change at any time through an Act of Parliament.",
+        "fr": "Le Canada est divisé en 338 circonscriptions. Un représentant du Parlement ou député est élu pour chacune des circonscriptions. Après la diffusion des chiffres de population de chaque recensement décennal, le directeur général des élections détermine le nombre de sièges à la Chambre des communes et publie cette information dans la Gazette du Canada. Les commissions de délimitation des circonscriptions déterminent ensuite les modifications à apporter aux limites des circonscriptions. Les commissions de délimitation des circonscriptions fédérales sont des organismes indépendants qui prennent toutes les décisions concernant les limites proposées et définitives des circonscriptions fédérales. Élections Canada offre des services de soutien à la commission de délimitation des circonscriptions dans chaque province. À la lumière des rapports de ces commissions, le directeur général des élections prépare un décret de représentation électorale faisant état des limites, du nom et de la population de chaque CF. Le décret de représentation électorale prend effet à la première dissolution du Parlement qui se produit au moins sept mois après sa proclamation. Le décret de représentation électorale de 2013 (proclamée le 5 octobre 2013) était fondée sur les chiffres de population du recensement de 2011; le nombre de CF, établi à 308 selon le décret de représentation électorale de 2003, est passé à 338. L’Ontario s’est accru de quinze sièges, l’Alberta et la Colombie-Britannique en ont gagné six chacun, alors que le Québec en a ajouté trois. Le 19 juin 2014, la Loi de 2014 sur les changements de noms de circonscriptions (Projet de loi C-37) a reçu la sanction royale modifiant les noms de 31 CF. Le nom des CF peut être modifié n’importe quand par une loi fédérale."
+    },
+
+    "keywords": {
+        "en": [],
+        "fr": []
+    },
+    "status": null,
+    "association_type": [],
+    "aggregate_identifier": [],
+    
+    "spatial_representation_type": [
+        "vector"
+    ],
+    "topic_category": [
+        "boundaries"
+    ],
+    "spatial": "{\"type\": \"Polygon\", \"coordinates\": [[[-141, 42.4], [-141, 83.3], [-53.7, 83.3], [-53.7, 42.4], [-141, 42.4]]]}",
+
+    "time_period_coverage_start": null,
+    "time_period_coverage_end": null,
+    "frequency": null,
+    
+    "license_id": "ca-ogl-lgo",
+
+    "resources": [
+        {
+            "format": "WMS",
+            "language": "eng; CAN",
+            "url": "http://205.195.196.111/wms/fedb_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=federal_electoral_districts_boundaries_2013&legend_format=image/png&feature_info_type=text/html",
+            "content": null,
+            "name": null
+        },
+        {
+            "format": "WMS",
+            "language": "fra; CAN",
+            "url": "http://205.195.196.111/wms/fedb_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=limites_circonscriptions_federales_2013&legend_format=image/png&feature_info_type=text/html",
+            "content": null,
+            "name": null
+        }
+    ],
+    
+    "distributor": {
+        "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation",
+        "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre"
+    },
+    "maintainer_email": "geoginfo@NRCan.gc.ca",
+    "responsible_role": "processor",
+
+}
+
