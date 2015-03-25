@@ -1,0 +1,80 @@
+{
+    "type": "geo",
+
+    "id": "1e995349-895b-49f4-9a06-c6224abb1da4",
+    "parent_id": null,
+    "hierarchy_level": "dataset",
+    "url": null,
+    "title": {
+        "en": "TC - Canada’s National Highway System",
+        "fr": "TC - Réseau routier national du Canada",
+    },
+
+    "date_published": null,
+    "date_modified": null,
+    "digital_object_identifier": null,
+    "individual_name": null,
+    "position_name": {
+        "en": null,
+        "fr": null
+    }
+
+    "owner_org": "tc",
+
+    "reference_system": "EPSG:4617",
+
+    "author": "Roberto Molina",
+    "author_email": "roberto.molina@tc.gc.ca",
+
+    "notes": {
+        "en": "NHS as officially accepted by the Council of Ministers, mapping by Transport Canada.",
+        "fr": "RRN tel qu'accepté officiellement par le Conseil des ministres, la cartographie par Transports Canada."
+    },
+
+    "keywords": {
+        "en": [],
+        "fr": []
+    },
+    "status": null,
+    "association_type": [],
+    "aggregate_identifier": [],
+    
+    "spatial_representation_type": [
+        "vector"
+    ],
+    "topic_category": [
+        "transportation"
+    ],
+    "spatial": "{\"type\": \"Polygon\", \"coordinates\": [[[-141.003, 41.6755], [-141.003, 83.1139], [-52.6174, 83.1139], [-52.6174, 41.6755], [-141.003, 41.6755]]]}",
+
+    "time_period_coverage_start": null,
+    "time_period_coverage_end": null,
+    "frequency": null,
+    
+    "license_id": "ca-ogl-lgo",
+
+    "resources": [
+        {
+            "format": "WMS",
+            "language": "eng; CAN",
+            "url": "http://205.195.196.111/wms/nhs_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=national_highway_system&legend_format=image/png&feature_info_type=text/html",
+            "content": null,
+            "name": null
+        },
+        {
+            "format": "WMS",
+            "language": "fra; CAN",
+            "url": "http://205.195.196.111/wms/nhs_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=reseau_routier_national&legend_format=image/png&feature_info_type=text/html",
+            "content": null,
+            "name": null
+        }
+    ],
+
+    "responsible_organization": {
+        "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation",
+        "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre"
+    },
+    "maintainer_email": "geoginfo@NRCan.gc.ca",
+    "responsible_role": "processor",
+
+}
