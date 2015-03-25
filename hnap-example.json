@@ -13,7 +13,6 @@
     "date_published": null,
     "date_modified": null,
     "digital_object_identifier": null,
-    "individual_name": null,
     "position_name": {
         "en": null,
         "fr": null
@@ -23,8 +22,7 @@
 
     "reference_system": "EPSG:4617",
 
-    "author": "Roberto Molina",
-    "author_email": "roberto.molina@tc.gc.ca",
+    "individual_name": "Roberto Molina",
 
     "notes": {
         "en": "NHS as officially accepted by the Council of Ministers, mapping by Transport Canada.",
@@ -50,6 +48,10 @@
     "time_period_coverage_start": null,
     "time_period_coverage_end": null,
     "frequency": null,
+    "distributor": {
+        "en": null,
+        "fr": null
+    },
     
     "license_id": "ca-ogl-lgo",
 
@@ -75,6 +77,5 @@
         "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre"
     },
     "maintainer_email": "geoginfo@NRCan.gc.ca",
-    "responsible_role": "processor",
-
+    "responsible_role": "processor"
 }
