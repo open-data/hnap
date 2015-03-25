@@ -22,6 +22,10 @@
 
     "reference_system": "EPSG:4617",
 
+    "responsible_organization": {
+        "en": "Government of Canada; Transport Canada",
+        "fr": "Governement du Canada; Transport Canada"
+    },
     "individual_name": "Roberto Molina",
 
     "notes": {
@@ -48,10 +52,6 @@
     "time_period_coverage_start": null,
     "time_period_coverage_end": null,
     "frequency": null,
-    "distributor": {
-        "en": null,
-        "fr": null
-    },
     
     "license_id": "ca-ogl-lgo",
 
@@ -72,7 +72,7 @@
         }
     ],
 
-    "responsible_organization": {
+    "distributor": {
         "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation",
         "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre"
     },
