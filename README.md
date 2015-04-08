@@ -61,8 +61,12 @@ The `keywords` object above would contain lists of string values.
 | organisationNameFrench | responsible_organization.fr |
 | positionNameEnglish | position_name.en |
 | positionNameFrench | position_name.fr |
-| contactInfoEnglish | maintainer_email ? |
-| contactInfoFrench | |
+| contactInfo-deliveryPoint | contact_delivery_point |
+| contactInfo-CI_Address | contact_address |
+| contactInfo-administrativeArea | contact_administrative_area |
+| contactInfo-postalCode | contact_postal_code |
+| contactInfo-country | contact_country |
+| contactInfo-electronicMailAddress | maintainer_email |
 | role | responsible_role |
 | abstractEnglish | notes.en |
 | abstractFrench | notes.fr |
