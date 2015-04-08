@@ -230,9 +230,9 @@ for input_file in input_files:
 				print      '24b.  '+secondary.strip()
 
 		genericOut('25.   not-in-sample-----associationType',"gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:associationType/gmd:DS_AssociationTypeCode")
-		json_record['association_type'] {'NOSAMPLES'}
+		json_record['association_type'] = ['NOSAMPLES']
 		genericOut('26.   not-in-sample-----aggregateDataSetIdentifier',"gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetIdentifier/gmd:MD_Identifier/gmd:code/gco:CharacterString")
-		json_record['aggregate_identifier'] {'NOSAMPLES'}
+		json_record['aggregate_identifier'] = ['NOSAMPLES']
 
 		json_record['spatial_representation_type'] = {}
 		value = genericOut('27.   spatialRepresentationType','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode')
@@ -244,7 +244,7 @@ for input_file in input_files:
 				print      '27a.  '+primary.strip()
 				print      '27b.  '+secondary.strip()
 
-		json_record['topic_category'] {'NOSAMPLES'}
+		json_record['topic_category'] = ['NOSAMPLES']
 		genericOut('28.   topicCategory','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:topicCategory/gmd:MD_TopicCategoryCode')
 
 		genericOut('29.   geographicBoundingBox - westBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal')
