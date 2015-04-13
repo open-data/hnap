@@ -782,8 +782,11 @@ def main():
 	print "\nOGDMES\n"
 
 	#debug_output = SortedDict(debug_output)	
-	for key in sorted(debug_output):
-		print key+':'+debug_output[key]
+	for key, value in sorted(debug_output.items()):
+		print key + ':',
+		if isinstance(value, unicode):
+			value = value.encode('utf-8')
+		print value
 
 	if len(error_output) > 0:
 		print "\nERRORS\n"
