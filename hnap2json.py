@@ -28,9 +28,9 @@ from lxml import etree
 
 import collections
 import re
+import json
 
 #import codecs
-#import json
 #import os
 #import csv
 
@@ -63,6 +63,11 @@ def sanityFirst(values):
 		return ''
 	else:
 		return values[0]
+def sanityMandatory(pre,values):
+	if values == None or len(values) < 1:
+		reportError(pre+',madatory field missing,""')
+		return False
+	return True
 
 def main():
 	# Read the file, should be a streamed input in the future
@@ -147,8 +152,9 @@ def main():
 		OGDMES_property = 'characterSet'
 		tmp = fetchXMLValues(record,"gmd:characterSet/gmd:MD_CharacterSetCode")
 		sanitySingle(OGDMES_property,tmp)
-		json_record[OGDMES_property] = sanityFirst(tmp)
-		debug_output['04-OGDMES characterSet'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property] = sanityFirst(tmp)
+			debug_output['04-OGDMES characterSet'] = sanityFirst(tmp)
 
 		##### OGDMES-05 parentIdentifier
 		##################################################
@@ -163,18 +169,14 @@ def main():
 		OGDMES_property = 'hierarchyLevel'
 		tmp = fetchXMLValues(record,"gmd:hierarchyLevel/gmd:MD_ScopeCode")
 		sanitySingle(OGDMES_property,tmp)
-		json_record[OGDMES_property] = {}
-		if tmp == None or len(tmp) < 1:
-			reportError(OGDMES_property+",no value,")
-			json_record[OGDMES_property][CKAN_primary_lang] = ''
-			json_record[OGDMES_property][CKAN_secondary_lang] = ''
-		else:
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property] = {}
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 			json_record[OGDMES_property][CKAN_primary_lang] = primary.strip()
 			json_record[OGDMES_property][CKAN_secondary_lang] = secondary.strip()
 
-		debug_output['06-OGDMES hierarchyLevel-'+CKAN_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
-		debug_output['06-OGDMES hierarchyLevel-'+CKAN_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+			debug_output['06-OGDMES hierarchyLevel-'+CKAN_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
+			debug_output['06-OGDMES hierarchyLevel-'+CKAN_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
 
 		##### OGDMES-07 metadataContact
 		##################################################
@@ -185,26 +187,32 @@ def main():
 		# organizationName
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
 		sanitySingle(OGDMES_property+CKAN_primary_lang,tmp)
-		primary_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_property+'OrganizationName',tmp):
+			primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_property+CKAN_secondary_lang,tmp)
-		second_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_property+'OrganizationName',tmp):
+			second_vals.append(sanityFirst(tmp))
 
 		# voice
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
 		sanitySingle(OGDMES_property+CKAN_primary_lang,tmp)
-		primary_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_property+'Voice',tmp):
+			primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_property+CKAN_secondary_lang,tmp)
-		second_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_property+'Voice',tmp):
+			second_vals.append(sanityFirst(tmp))
 
 		# electronicMailAddress
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
 		sanitySingle(OGDMES_property+CKAN_primary_lang,tmp)
-		primary_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_property+'electronicMailAddress',tmp):
+			primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_property+CKAN_secondary_lang,tmp)
-		second_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_property+'electronicMailAddress',tmp):
+			second_vals.append(sanityFirst(tmp))
 
 		json_record[OGDMES_property] = {}
 		json_record[OGDMES_property][CKAN_primary_lang] = ','.join(primary_vals)
@@ -218,8 +226,9 @@ def main():
 		OGDMES_property = 'metadataRecordDateStamp'
 		tmp = fetchXMLValues(record,"gmd:dateStamp/gco:Date")
 		sanitySingle(OGDMES_property,tmp)
-		json_record['characterSet'] = sanityFirst(tmp)
-		debug_output['08-OGDMES metadataRecordDateStamp'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property+'electronicMailAddress',tmp):
+			json_record['characterSet'] = sanityFirst(tmp)
+			debug_output['08-OGDMES metadataRecordDateStamp'] = sanityFirst(tmp)
 
 		##### OGDMES-09 metadataStandardName
 		##################################################
@@ -240,17 +249,13 @@ def main():
 		tmp = fetchXMLValues(record,"gmd:MD_Metadata/gmd:locale/gmd:PT_Locale/gmd:languageCode/gmd:LanguageCode")
 		sanitySingle(OGDMES_property,tmp)
 		json_record[OGDMES_property] = {}
-		if tmp == None or len(tmp) < 1:
-			reportError(OGDMES_property+",no value,")
-			json_record[OGDMES_property][CKAN_primary_lang] = ''
-			json_record[OGDMES_property][CKAN_secondary_lang] = ''
-		else:
+		if tmp != None and len(tmp) > 0:
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 			json_record[OGDMES_property][CKAN_primary_lang] = primary.strip()
 			json_record[OGDMES_property][CKAN_secondary_lang] = secondary.strip()
 
-		debug_output['11-OGDMES locale'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
-		debug_output['11-OGDMES locale'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+			debug_output['11-OGDMES locale'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
+			debug_output['11-OGDMES locale'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
 
 		##### OGDMES-12 title
 		##################################################
@@ -259,14 +264,15 @@ def main():
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString")
 		sanitySingle(OGDMES_property+CKAN_primary_lang,tmp)
-		json_record[OGDMES_property][CKAN_primary_lang] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property][CKAN_primary_lang] = sanityFirst(tmp)
+			debug_output['12-OGDMES title'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
 		
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_property+CKAN_secondary_lang,tmp)
-		json_record[OGDMES_property][CKAN_secondary_lang] = sanityFirst(tmp)
-
-		debug_output['12-OGDMES title'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
-		debug_output['12-OGDMES title'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property][CKAN_secondary_lang] = sanityFirst(tmp)
+			debug_output['12-OGDMES title'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
 
 		##### OGDMES-13 dateContributed
 		##################################################
@@ -294,6 +300,9 @@ def main():
 					json_record['date_modified'] = cn[1][0].text.strip()
 					debug_output['15-OGDMES date_modified'] = json_record['date_modified']
 
+		if 'date_published' not in json_record:
+			reportError('datePublished,madatory field missing,""')
+
 		##### OGDMES-16 identifier
 		##################################################
 		OGDMES_property = 'identifier'
@@ -319,7 +328,7 @@ def main():
 		# A bit unique, some manual work to strip the GC object
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
-		if tmp != None and len(tmp) > 0:
+		if sanityMandatory(OGDMES_property,tmp):		
 			values = tmp[0].strip().split(';')
 			if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
 				reportError(organisationName+',"Bad organizationName, no Government of Canada",""')
@@ -327,9 +336,11 @@ def main():
 			for GOC_Div in values:
 				if GOC_Div.strip() in GC_Registry_of_Applied_Terms:
 					primary_vals.append(GOC_Div.strip())
+			json_record['responsible_organization'][CKAN_primary_lang] = ','.join(primary_vals)
+			debug_output['18-OGDMES organisationName'+OGDMES_primary_lang] = json_record['responsible_organization'][CKAN_primary_lang]
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		if tmp != None and len(tmp) > 0:
+		if sanityMandatory(OGDMES_property,tmp):
 			values = tmp[0].strip().split(';')
 			if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
 				reportError(organisationName+',"Bad organizationName, no Government of Canada",""')
@@ -337,12 +348,8 @@ def main():
 			for GOC_Div in values:
 				if GOC_Div.strip() in GC_Registry_of_Applied_Terms:
 					primary_vals.append(GOC_Div.strip())
-
-		json_record['responsible_organization'][CKAN_primary_lang] = ','.join(primary_vals)
-		json_record['responsible_organization'][CKAN_secondary_lang] = ','.join(second_vals)
-
-		debug_output['18-OGDMES organisationName'+OGDMES_primary_lang] = json_record['responsible_organization'][CKAN_primary_lang]
-		debug_output['18-OGDMES organisationName'+OGDMES_secondary_lang] = json_record['responsible_organization'][CKAN_secondary_lang]
+			json_record['responsible_organization'][CKAN_secondary_lang] = ','.join(second_vals)
+			debug_output['18-OGDMES organisationName'+OGDMES_secondary_lang] = json_record['responsible_organization'][CKAN_secondary_lang]
 
 		##### OGDMES-19 positionName
 		##################################################
@@ -406,6 +413,11 @@ def main():
 		sanitySingle(OGDMES_property+CKAN_secondary_lang+'electronicMailAddress',tmp)
 		second_vals.append(sanityFirst(tmp))
 
+		if not len(primary_vals):
+			reportError('contactInfo,madatory field missing,""')
+		if not len(second_vals):
+			reportError('contactInfo,madatory field missing,""')
+
 		json_record['contactInfo'] = {}
 		json_record['contactInfo'][CKAN_primary_lang] = ','.join(primary_vals)
 		json_record['contactInfo'][CKAN_secondary_lang] = ','.join(second_vals)
@@ -419,17 +431,13 @@ def main():
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode")
 		sanitySingle(OGDMES_property,tmp)
 		json_record['responsible_role'] = {}
-		if tmp == None or len(tmp) < 1:
-			reportError(OGDMES_property+",no value,")
-			json_record['responsible_role'][CKAN_primary_lang] = ''
-			json_record['responsible_role'][CKAN_secondary_lang] = ''
-		else:
+		if sanityMandatory(OGDMES_property,tmp):
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 			json_record['responsible_role'][CKAN_primary_lang] = primary.strip()
 			json_record['responsible_role'][CKAN_secondary_lang] = secondary.strip()
 
-		debug_output['21-OGDMES role'] = json_record['responsible_role'][CKAN_primary_lang]
-		debug_output['21-OGDMES role'] = json_record['responsible_role'][CKAN_secondary_lang]
+			debug_output['21-OGDMES role'] = json_record['responsible_role'][CKAN_primary_lang]
+			debug_output['21-OGDMES role'] = json_record['responsible_role'][CKAN_secondary_lang]
 
 		##### OGDMES-22 abstract
 		##################################################
@@ -438,14 +446,15 @@ def main():
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString")
 		sanitySingle(OGDMES_property+CKAN_primary_lang,tmp)
-		json_record['notes'][CKAN_primary_lang] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record['notes'][CKAN_primary_lang] = sanityFirst(tmp)
+			debug_output['22-OGDMES abstract'+OGDMES_primary_lang] = json_record['notes'][CKAN_primary_lang]
 		
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_property+CKAN_secondary_lang,tmp)
-		json_record['notes'][CKAN_secondary_lang] = sanityFirst(tmp)
-
-		debug_output['22-OGDMES abstract'+OGDMES_primary_lang] = json_record['notes'][CKAN_primary_lang]
-		debug_output['22-OGDMES abstract'+OGDMES_secondary_lang] = json_record['notes'][CKAN_secondary_lang]
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record['notes'][CKAN_secondary_lang] = sanityFirst(tmp)
+			debug_output['22-OGDMES abstract'+OGDMES_secondary_lang] = json_record['notes'][CKAN_secondary_lang]
 
 		##### OGDMES-23 descriptiveKeywords
 		##################################################
@@ -467,6 +476,11 @@ def main():
 			value = p.sub( '', value)
 			second_vals.append(value)
 
+		if not len(primary_vals):
+			reportError('keywords,madatory field missing,""')
+		if not len(second_vals):
+			reportError('keywords,madatory field missing,""')
+
 		json_record['keywords'][CKAN_primary_lang] = ','.join(primary_vals)
 		json_record['keywords'][CKAN_secondary_lang] = ','.join(second_vals)
 
@@ -479,17 +493,13 @@ def main():
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status/gmd:MD_ProgressCode")
 		sanitySingle(OGDMES_property,tmp)
 		json_record[OGDMES_property] = {}
-		if tmp == None or len(tmp) < 1:
-			reportError(OGDMES_property+",no value,")
-			json_record[OGDMES_property][CKAN_primary_lang] = ''
-			json_record[OGDMES_property][CKAN_secondary_lang] = ''
-		else:
+		if sanityMandatory(OGDMES_property,tmp):
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 			json_record[OGDMES_property][CKAN_primary_lang] = primary.strip()
 			json_record[OGDMES_property][CKAN_secondary_lang] = secondary.strip()
 
-		debug_output['24-OGDMES status'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
-		debug_output['24-OGDMES status'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+			debug_output['24-OGDMES status'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
+			debug_output['24-OGDMES status'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
 
 		##### OGDMES-25 associationType
 		##################################################
@@ -513,57 +523,58 @@ def main():
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status/gmd:MD_ProgressCode")
 		sanitySingle(OGDMES_property,tmp)
 		json_record['spatial_representation_type'] = {}
-		if tmp == None or len(tmp) < 1:
-			reportError(OGDMES_property+",no value,")
-			json_record['spatial_representation_type'][CKAN_primary_lang] = ''
-			json_record['spatial_representation_type'][CKAN_secondary_lang] = ''
-		else:
+		if sanityMandatory(OGDMES_property,tmp):
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 			json_record['spatial_representation_type'][CKAN_primary_lang] = primary.strip()
 			json_record['spatial_representation_type'][CKAN_secondary_lang] = secondary.strip()
 
-		debug_output['27-OGDMES spatialRepresentationType'+OGDMES_primary_lang] = json_record['spatial_representation_type'][CKAN_primary_lang]
-		debug_output['27-OGDMES spatialRepresentationType'+OGDMES_secondary_lang] = json_record['spatial_representation_type'][CKAN_secondary_lang]
+			debug_output['27-OGDMES spatialRepresentationType'+OGDMES_primary_lang] = json_record['spatial_representation_type'][CKAN_primary_lang]
+			debug_output['27-OGDMES spatialRepresentationType'+OGDMES_secondary_lang] = json_record['spatial_representation_type'][CKAN_secondary_lang]
 
 		##### OGDMES-28 topicCategory
 		##################################################
 		OGDMES_property = 'topicCategory'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:topicCategory/gmd:MD_TopicCategoryCode")
 		sanitySingle(OGDMES_property,tmp)
-		json_record['topic_category'] = sanityFirst(tmp)
-		debug_output['28-OGDMES topicCategory'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record['topic_category'] = sanityFirst(tmp)
+			debug_output['28-OGDMES topicCategory'] = sanityFirst(tmp)
 
 		##### OGDMES-29 westBoundingLongitude
 		##################################################
 		OGDMES_property = 'westBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal")
 		sanitySingle(OGDMES_property,tmp)
-		json_record[OGDMES_property] = sanityFirst(tmp)
-		debug_output['29-OGDMES westBoundingLongitude'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property] = sanityFirst(tmp)
+			debug_output['29-OGDMES westBoundingLongitude'] = sanityFirst(tmp)
 
 		##### OGDMES-30 eastBoundingLongitude
 		##################################################
 		OGDMES_property = 'eastBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:eastBoundLongitude/gco:Decimal")
 		sanitySingle(OGDMES_property,tmp)
-		json_record[OGDMES_property] = sanityFirst(tmp)
-		debug_output['30-OGDMES eastBoundingLongitude'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property] = sanityFirst(tmp)
+			debug_output['30-OGDMES eastBoundingLongitude'] = sanityFirst(tmp)
 
 		##### OGDMES-31 southBoundingLongitude
 		##################################################
 		OGDMES_property = 'southBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:southBoundLatitude/gco:Decimal")
 		sanitySingle(OGDMES_property,tmp)
-		json_record[OGDMES_property] = sanityFirst(tmp)
-		debug_output['31-OGDMES southBoundingLongitude'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property] = sanityFirst(tmp)
+			debug_output['31-OGDMES southBoundingLongitude'] = sanityFirst(tmp)
 
 		##### OGDMES-32 northBoundingLongitude
 		##################################################
 		OGDMES_property = 'northBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:northBoundLatitude/gco:Decimal")
 		sanitySingle(OGDMES_property,tmp)
-		json_record[OGDMES_property] = sanityFirst(tmp)
-		debug_output['32-OGDMES northBoundingLongitude'] = sanityFirst(tmp)
+		if sanityMandatory(OGDMES_property,tmp):
+			json_record[OGDMES_property] = sanityFirst(tmp)
+			debug_output['32-OGDMES northBoundingLongitude'] = sanityFirst(tmp)
 
 		GeoJSON = {}
 		GeoJSON['type'] = "MultiPolygon"
@@ -601,17 +612,13 @@ def main():
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode")
 		sanitySingle(OGDMES_property,tmp)
 		json_record['frequency'] = {}
-		if tmp == None or len(tmp) < 1:
-			reportError(OGDMES_property+",no value,")
-			json_record['frequency'][CKAN_primary_lang] = ''
-			json_record['frequency'][CKAN_secondary_lang] = ''
-		else:
+		if sanityMandatory(OGDMES_property,tmp):
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 			json_record['frequency'][CKAN_primary_lang] = primary.strip()
 			json_record['frequency'][CKAN_secondary_lang] = secondary.strip()
 
-		debug_output['34-OGDMES maintenanceAndUpdateFrequency'+OGDMES_primary_lang] = json_record['frequency'][CKAN_primary_lang]
-		debug_output['34-OGDMES maintenanceAndUpdateFrequency'+OGDMES_secondary_lang] = json_record['frequency'][CKAN_secondary_lang]
+			debug_output['34-OGDMES maintenanceAndUpdateFrequency'+OGDMES_primary_lang] = json_record['frequency'][CKAN_primary_lang]
+			debug_output['34-OGDMES maintenanceAndUpdateFrequency'+OGDMES_secondary_lang] = json_record['frequency'][CKAN_secondary_lang]
 
 		##### OGDMES-35 licence_id
 		##################################################
@@ -625,17 +632,24 @@ def main():
 		##################################################
 		OGDMES_property = 'referenceSystemInformation'
 
+		vala = ''
+		valb = ''
+		valc = ''
+
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
 		sanitySingle(OGDMES_property,tmp)
-		vala = tmp[0]
+		if sanityMandatory(OGDMES_property,tmp):
+			vala = tmp[0]
 
 		tmp = fetchXMLValues(record,"gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:codeSpace/gco:CharacterString")
 		sanitySingle(OGDMES_property,tmp)
-		valb = tmp[0]
+		if sanityMandatory(OGDMES_property,tmp):
+			valb = tmp[0]
 
 		tmp = fetchXMLValues(record,"gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:version/gco:CharacterString")
 		sanitySingle(OGDMES_property,tmp)
-		valc = tmp[0]
+		if sanityMandatory(OGDMES_property,tmp):
+			valc = tmp[0]
 
 		json_record['reference_system'] = '"'+vala+'","'+valb+'","'+valc+'"'
 
@@ -684,6 +698,11 @@ def main():
 			primary_vals.append(role_array[0])
 			second_vals.append(role_array[1])
 
+		if not len(primary_vals):
+			reportError('distributor,madatory field missing,""')
+		if not len(second_vals):
+			reportError('distributor,madatory field missing,""')
+
 		json_record['distributor'] = {}
 		json_record['distributor'][CKAN_primary_lang] = ','.join(primary_vals)
 		json_record['distributor'][CKAN_secondary_lang] = ','.join(second_vals)
@@ -697,33 +716,50 @@ def main():
 		json_record['CatalogueType'] = 'geo or fgp?'
 		debug_output['38-OGDMES CatalogueType'] = "geo or fgp?"
 
+		##### OGDMES-39 ResourceNameEnglish
+		##################################################
+		##### OGDMES-40 accessURL
+		##################################################
+		##### OGDMES-41 format
+		##################################################
+		##### OGDMES-42 language
+		##################################################
+		##### OGDMES-43 contentType
+		##################################################
+		json_record['resources'] = []
 		record_resources = fetchXMLArray(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource")
 		for resource in record_resources:
 			json_record_resource = {}
 
 			json_record_resource['ResourceName'] = {}
 
+			OGDMES_property = 'Resource-ResourceName'
 			tmp = fetchXMLValues(resource,"gmd:name/gco:CharacterString")
 			sanitySingle(OGDMES_property,tmp)
-			json_record_resource['ResourceName'][CKAN_primary_lang] = sanityFirst(tmp)
-			debug_output['39-OGDMES CatalogueType'+OGDMES_primary_lang] = json_record_resource['ResourceName'][CKAN_primary_lang]
+			if sanityMandatory(OGDMES_property+OGDMES_primary_lang,tmp):
+				json_record_resource['ResourceName'][CKAN_primary_lang] = sanityFirst(tmp)
+				debug_output['39-OGDMES ResourceName'+OGDMES_primary_lang] = json_record_resource['ResourceName'][CKAN_primary_lang]
 
 			tmp = fetchXMLValues(record,"gmd:name/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 			sanitySingle(OGDMES_property,tmp)
-			json_record_resource['ResourceName'][CKAN_secondary_lang] = sanityFirst(tmp)
-			debug_output['39-OGDMES CatalogueType'+OGDMES_secondary_lang] = json_record_resource['ResourceName'][CKAN_secondary_lang]
+			if sanityMandatory(OGDMES_property+OGDMES_secondary_lang,tmp):
+				json_record_resource['ResourceName'][CKAN_secondary_lang] = sanityFirst(tmp)
+				debug_output['39-OGDMES ResourceName'+OGDMES_secondary_lang] = json_record_resource['ResourceName'][CKAN_secondary_lang]
 
+			OGDMES_property = 'Resource-accessUrl'
 			tmp = fetchXMLValues(record,"gmd:linkage/gmd:URL")
 			sanitySingle(OGDMES_property,tmp)
-			json_record_resource['accessURL'] = sanityFirst(tmp)
-			debug_output['40-OGDMES accessURL'] = json_record_resource['accessURL']
+			if sanityMandatory(OGDMES_property,tmp):
+				json_record_resource['accessURL'] = sanityFirst(tmp)
+				debug_output['40-OGDMES accessURL'] = json_record_resource['accessURL']
 
+			OGDMES_property = 'Resource-description;'
 			tmp = fetchXMLValues(record,"gmd:description/gco:CharacterString")
 			sanitySingle(OGDMES_property,tmp)
 			if tmp == None or len(tmp) < 1:
-				reportError(OGDMES_property+",format missing,")
-				reportError(OGDMES_property+",language missing,")
-				reportError(OGDMES_property+",contentType missing,")
+				reportError(OGDMES_property+'format,madatory field missing,""')
+				reportError(OGDMES_property+'language,madatory field missing,""')
+				reportError(OGDMES_property+'contentType,madatory field missing,""')
 				json_record_resource['format'] = ''
 				json_record_resource['language'] = ''
 				json_record_resource['contentType'] = ''
@@ -739,19 +775,24 @@ def main():
 				debug_output['42-OGDMES language']
 				debug_output['43-OGDMES contentType']
 
+			json_record['resources'].append(json_record_resource)
+
 		continue
 
-	print "DEBUG!"
+	print "\nOGDMES\n"
 
 	#debug_output = SortedDict(debug_output)	
 	for key in sorted(debug_output):
 		print key+':'+debug_output[key]
 
 	if len(error_output) > 0:
-		print "ERRORS!"
+		print "\nERRORS\n"
 		sorted(error_output)
 		for error in error_output:
 			print error
+
+	print "\nJSON\n"
+	print json.dumps(json_record)
 
 	return 1
 
