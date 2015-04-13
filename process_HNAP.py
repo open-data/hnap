@@ -10,10 +10,41 @@ import json
 import os
 import csv
 
-output_human = False
+output_human = True
 output_json  = True
 
 global_json = {}
+
+napCI_RoleCode = {
+	'resourceProvider':['resourceProvider','fournisseurRessource'],
+	'fournisseurRessource':['resourceProvider','fournisseurRessource'],
+	'custodian':['custodian','conservateur'],
+	'conservateur':['custodian','conservateur'],
+	'owner':['owner','propriétaire'],
+	'propriétaire':['owner','propriétaire'],
+	'user':['user','utilisateur'],
+	'utilisateur':['user','utilisateur'],
+	'distributor':['distributor','distributeur'],
+	'distributeur':['distributor','distributeur'],
+	'pointOfContact':['pointOfContact','contact'],
+	'contact':['pointOfContact','contact'],
+	'principalInvestigator':['principalInvestigator','chercheurPrincipal'],
+	'chercheurPrincipal':['principalInvestigator','chercheurPrincipal'],
+	'processor':['processor','traiteur'],
+	'traiteur':['processor','traiteur'],
+	'publisher':['publisher','éditeur'],
+	'éditeur':['publisher','éditeur'],
+	'author':['author','auteur'],
+	'auteur':['author','auteur'],
+	'collaborator':['collaborator','collaborateur'],
+	'collaborateur':['collaborator','collaborateur'],
+	'editor':['editor','réviseur'],
+	'réviseur':['editor','réviseur'],
+	'mediator':['mediator','médiateur'],
+	'médiateur':['mediator','médiateur'],
+	'rightsHolder':['rightsHolder','détenteurDroits'],
+	'détenteurDroits':['rightsHolder','détenteurDroits']
+}
 
 # Report Header
 iso_time = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
@@ -95,21 +126,27 @@ for input_file in input_files:
 					return None
 			return value
 
-		CRecord_primary_language = genericOut('1.    fileIdentifier',"gmd:language/gco:CharacterString")
+		CRecord_primary_language = genericOut('-.    recordLanguage',"gmd:language/gco:CharacterString")
 		CRecord_primary_language = CRecord_primary_language.strip().split(';')[0]
-		print CRecord_primary_language
+		#print CRecord_primary_language
 		if CRecord_primary_language == 'eng':
-			CRecord_secondary_language = 'fra'
+			CRecord_secondary_language = 'fr'
 		else:
-			CRecord_secondary_language = 'eng'
+			CRecord_secondary_language = 'en'
 		#continue
 		CRecord_id = genericOut('1.    fileIdentifier',"gmd:fileIdentifier/gco:CharacterString")
 		json_record['id'] = CRecord_id
+
+		json_record['shortKey'] = CRecord_id[0:8]
 		if output_human:
-			print      '2.    shortKey - UDEFINED'
-		genericOut('3.    metadataRecordLanguage',"gmd:language/gco:CharacterString")
-		genericOut('4.    characterSet',"gmd:characterSet/gmd:MD_CharacterSetCode")
+			print      '2.    shortKey:'+json_record['shortKey']
+
+		json_record['conf-metadataRecordLanguage'] = genericOut('3.    metadataRecordLanguage',"gmd:language/gco:CharacterString")
+
+		json_record['conf-characterSet'] = genericOut('4.    characterSet',"gmd:characterSet/gmd:MD_CharacterSetCode")
+
 		json_record['parent_id'] = genericOut('5.    parentIdentifier',"gmd:parentIdentifier/gco:CharacterString")
+
 		value = genericOut('6.    hierarchyLevel',"gmd:hierarchyLevel/gmd:MD_ScopeCode")
 		if value != None:
 			(primary,secondary) = value.strip().split(';')
@@ -119,17 +156,32 @@ for input_file in input_files:
 			if output_human:
 				print      '6a.   '+primary.strip()
 				print      '6b.   '+secondary.strip()
-		genericOut('7a1.  organisationName',"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
-		genericOut('7a2.  organizationName-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		genericOut('7b1.  voice',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
-		genericOut('7b2.  voice-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		genericOut('7c1.  electronicMailAddress',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
-		genericOut('7c2.  electronicMailAddress-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		genericOut('8.    metadataRecordDateStamp',"gmd:dateStamp/gco:Date")
+
+		json_record['organisationName'] = {}
+		json_record['organisationName'][CRecord_primary_language]   = genericOut('7a1.  organisationName',"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
+		json_record['organisationName'][CRecord_secondary_language] = genericOut('7a2.  organizationName-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+
+		json_record['voice'] = {}
+		json_record['voice'][CRecord_primary_language]   = genericOut('7b1.  voice',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
+		json_record['voice'][CRecord_secondary_language] = genericOut('7b2.  voice-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+
+		json_record['electronicMailAddress'] = {}
+		json_record['electronicMailAddress'][CRecord_primary_language]   = genericOut('7c1.  electronicMailAddress',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
+		json_record['electronicMailAddress'][CRecord_secondary_language] = genericOut('7c2.  electronicMailAddress-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		
+		json_record['electronicMailAddress'] = genericOut('8.    metadataRecordDateStamp',"gmd:dateStamp/gco:Date")
+
+		json_record['metadataStandard'] = {}
+		json_record['metadataStandard']['en'] = 'Government of Canada’s Open Geospatial Data Metadata Element Set'
+		json_record['metadataStandard']['fr'] = 'Données ouvertes géospatiales du gouvernement du Canada – Ensemble d’éléments de métadonnées'
+
+		json_record['Metadata URI'] = 'GeoNetworkServer/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id='+CRecord_id
+
 		if output_human:
 			print      '9-eng metadataStandard:Government of Canada’s Open Geospatial Data Metadata Element Set'
 			print      '9-fra metadataStandard:Données ouvertes géospatiales du gouvernement du Canada – Ensemble d’éléments de métadonnées'
 			print      '10.   Metadata URI:Metadata URI .... GeoNetworkServer/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=698ea2e7-8025-481b-a011-7ff6232939aa'
+
 		value = genericOut('11.   locale',"gmd:MD_Metadata/gmd:locale/gmd:PT_Locale/gmd:languageCode/gmd:LanguageCode")
 		if value != None:
 			(primary,secondary) = value.strip().split(';')
@@ -173,7 +225,7 @@ for input_file in input_files:
 				json_record['responsible_organization'][CRecord_primary_language] = GOC_Div.strip()
 				if output_human:
 					print '18ax. '+GOC_Div.strip()
-		genericOut('18b.  organisationName-Alt',"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		value = genericOut('18b.  organisationName-Alt',"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if value != None:
 			values = value.strip().split(';')
 			if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
@@ -192,15 +244,15 @@ for input_file in input_files:
 		genericOut('20a1.  contactInfo-deliveryPoint',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString")
 		genericOut('20a2.  contactInfo-deliveryPoint-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		genericOut('20b1.  contactInfo-CI_Address',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString")
-		genericOut('20b1.  contactInfo-CI_Address-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		genericOut('20b2.  contactInfo-CI_Address-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		genericOut('20c1.  contactInfo-administrativeArea',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString")
-		genericOut('20c1.  contactInfo-administrativeArea-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		genericOut('20c2.  contactInfo-administrativeArea-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		genericOut('20d1.  contactInfo-postalCode',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString")
-		genericOut('20d1.  contactInfo-postalCode-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		genericOut('20d2.  contactInfo-postalCode-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		genericOut('20e1.  contactInfo-country',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString")
-		genericOut('20e1.  contactInfo-country-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		genericOut('20e2.  contactInfo-country-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		genericOut('20f1.  contactInfo-electronicMailAddress',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
-		genericOut('20f1.  contactInfo-electronicMailAddress-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		genericOut('20f2.  contactInfo-electronicMailAddress-Alt',"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		value = genericOut('21.  role',"gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode")
 		json_record['responsible_role'] = {}
 		if value != None:
@@ -229,11 +281,11 @@ for input_file in input_files:
 				print      '24a.  '+primary.strip()
 				print      '24b.  '+secondary.strip()
 
-		genericOut('25.   not-in-sample-----associationType',"gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:associationType/gmd:DS_AssociationTypeCode")
 		json_record['association_type'] = ['NOSAMPLES']
-		genericOut('26.   not-in-sample-----aggregateDataSetIdentifier',"gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetIdentifier/gmd:MD_Identifier/gmd:code/gco:CharacterString")
+		genericOut('25.   not-in-sample-----associationType',"gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:associationType/gmd:DS_AssociationTypeCode")
 		json_record['aggregate_identifier'] = ['NOSAMPLES']
-
+		genericOut('26.   not-in-sample-----aggregateDataSetIdentifier',"gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetIdentifier/gmd:MD_Identifier/gmd:code/gco:CharacterString")
+		
 		json_record['spatial_representation_type'] = {}
 		value = genericOut('27.   spatialRepresentationType','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode')
 		if value != None:
@@ -247,10 +299,10 @@ for input_file in input_files:
 		json_record['topic_category'] = ['NOSAMPLES']
 		genericOut('28.   topicCategory','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:topicCategory/gmd:MD_TopicCategoryCode')
 
-		genericOut('29.   geographicBoundingBox - westBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal')
-		genericOut('30.   geographicBoundingBox - eastBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:eastBoundLongitude/gco:Decimal')
-		genericOut('31.   geographicBoundingBox - southBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:southBoundLatitude/gco:Decimal')
-		genericOut('32.   geographicBoundingBox - northBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:northBoundLatitude/gco:Decimal')
+		json_record['westBoundingLongitude'] = genericOut('29.   geographicBoundingBox - westBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal')
+		json_record['eastBoundingLongitude'] = genericOut('30.   geographicBoundingBox - eastBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:eastBoundLongitude/gco:Decimal')
+		json_record['southBoundingLongitude'] = genericOut('31.   geographicBoundingBox - southBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:southBoundLatitude/gco:Decimal')
+		json_record['northBoundingLongitude'] = genericOut('32.   geographicBoundingBox - northBoundingLongitude','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:northBoundLatitude/gco:Decimal')
 
 		json_record['time_period_coverage_start'] = genericOut('33a.  temporalElement-begin','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition')
 		json_record['time_period_coverage_end']   = genericOut('33b.  temporalElement-end','gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition')		
@@ -278,32 +330,76 @@ for input_file in input_files:
 			print '36abc.    reference:'+reference_system
 
 		json_record['distributor'] = {}
-		vala = genericOut('37a.   distributor-name','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString')
-		valb = genericOut('37b.   distributor-email','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString')
-		json_record['distributor'][CRecord_primary_language] = vala
-		json_record['distributor'][CRecord_secondary_language] = valb
-		if output_human:
-			print '37ab.    distributor:"'+vala+'","'+valb+'"'
-
+		tmp_array_prime = []
+		tmp_array_alt   = []
+		
+		tmp_array_prime.append(genericOut('37a1.   distributor-name','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString'))
+		tmp_array_alt.append(genericOut('37a2.   distributor-name-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString'))
+		tmp_array_prime.append(genericOut('37b1.   distributor-email','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString'))
+		tmp_array_alt.append(genericOut('37b2.   distributor-email-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString'))
+		#tmp_array_prime.append(genericOut('37c.   distributor-bilingualrole','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode'))
+		#tmp_array_alt.append(genericOut('37f.   distributor-bilingualrole-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode'))
+		#json_record['distributor']['name'] = {}
+		#json_record['distributor']['name'][CRecord_primary_language] = genericOut('37a1.   distributor-name','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString')
+		#json_record['distributor']['name'][CRecord_secondary_language] = genericOut('37a2.   distributor-name-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString')
+		#json_record['distributor']['email'] = {}
+		#json_record['distributor']['email'][CRecord_primary_language] = genericOut('37b1.   distributor-email','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString')
+		#json_record['distributor'][CRecord_secondary_language] = genericOut('37b2.   distributor-email-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString')
 		value = genericOut('37c.   distributor-bilingualrole','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode')
 		if value != None:
 			(primary,secondary) = value.strip().split(';')
-			if output_human:
-				print      '37c1.  '+primary.strip()
-				print      '37c2.  '+secondary.strip()
-		genericOut('37d.   distributor-name-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString')
-		genericOut('37e.   distributor-email-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString')
-		value = genericOut('37f.   distributor-bilingualrole-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode')
-		if value != None:
-			(primary,secondary) = value.strip().split(';')
-			if output_human:
-				print      '37f1.  '+primary.strip()
-				print      '37f2.  '+secondary.strip()
+
+			primary = primary.strip()
+			secondary = secondary.strip()
+
+			role_array = []
+			for (key,values) in napCI_RoleCode.items():
+				#print "KK-key:"+key
+				#print "KK-pri:"+primary
+				#print "KK-sec:"+secondary
+				if key == primary:
+					role_array = values
+					break
+				if key == secondary:
+					role_array = values
+					break
+			if len(role_array) < 2:
+				print "ERROR: Distributor Bilingual Role"
+			else:
+				tmp_array_prime.append(role_array[0])
+				tmp_array_alt.append(role_array[1])
+		#	tmp_array_prime.append(primary.strip())
+		#	tmp_array_alt.append(secondary.strip())
+		#	if output_human:
+		#		print      '37c1.  '+primary.strip()
+		#		print      '37c2.  '+secondary.strip()
+		#value = genericOut('37f.   distributor-bilingualrole-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode')
+		#if value != None:
+		#	(primary,secondary) = value.strip().split(';')
+		#	if output_human:
+		#		print      '37f1.  '+primary.strip()
+		#		print      '37f2.  '+secondary.strip()
+		json_record['distributor'][CRecord_primary_language] = ','.join(tmp_array_prime)
+		json_record['distributor'][CRecord_secondary_language] = ','.join(tmp_array_alt)
+		if output_human:
+			print '37-final.    distributor:'+json_record['distributor'][CRecord_primary_language]
+			print '37-final-alt.    distributor-alt:'+json_record['distributor'][CRecord_secondary_language]
+
+		json_record['catalogueType'] = 'FGP'
 		if output_human:
 			print "38.  CatalogueType: FGP"
-		genericOut('39a.   ResourceName','gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:name/gco:CharacterString')
+
+
+
+		#root = etree.parse(input_file)
+		##for record in root.xpath("/gmd:MD_Metadata/gmd:fileIdentifie"):
+		#for record in root.xpath("/gmd:MD_Metadata", namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco'}):
+
+		genericOut('39...........       Resource','gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/')
+
+		genericOut('39a.       ResourceName','gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:name/gco:CharacterString')
 		genericOut('39b.   ResourceName-Alt','gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:name/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString')
-		genericOut('40x.    accessURL','gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage/gmd:URL')
+		genericOut('40x.          accessURL','gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage/gmd:URL')
 		###### format
 		###### language
 		###### contentType
