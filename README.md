@@ -39,20 +39,20 @@ The `keywords` object above would contain lists of string values.
 
 | OGDMES FINAL DRAFT | ckan field |
 | --- | --- |
-| fileIdentifier | id |
+| fileIdentifier | id (core) |
 | metadataRecordLanguage | |
 | characterSet | |
 | parentIdentifier | parent_id |
 | hierarchyLevel | hierarchy_level |
 | metadataContactEnglish | |
 | metadataContactFrench | |
-| metadataRecordDateStamp | (created by ckan) |
+| metadataRecordDateStamp | metadata_modified (core) |
 | metadataStandardName | |
-| metadataURI | url |
+| metadataURI | url (core) |
 | locale | |
-| title english | title.en |
-| title french | title.fr |
-| dateContributed | (created by ckan) |
+| title english | title.en (core) |
+| title french | title.fr (core) |
+| dateContributed | metadata_created (core) |
 | datePublished | date_published |
 | dateModified | date_modified |
 | identifier | digital_object_identifier |
@@ -66,10 +66,10 @@ The `keywords` object above would contain lists of string values.
 | contactInfo-administrativeArea | contact_administrative_area |
 | contactInfo-postalCode | contact_postal_code |
 | contactInfo-country | contact_country |
-| contactInfo-electronicMailAddress | maintainer_email |
+| contactInfo-electronicMailAddress | maintainer_email (core) |
 | role | responsible_role |
-| abstractEnglish | notes.en |
-| abstractFrench | notes.fr |
+| abstractEnglish | notes.en (core) |
+| abstractFrench | notes.fr (core) |
 | descriptiveKeywordsEnglish | keywords.en[] |
 | descriptiveKeywordsFrench | keywords.fr[] |
 | status | status |
@@ -77,20 +77,20 @@ The `keywords` object above would contain lists of string values.
 | aggregateDataSetIdentifier | aggregate_identifier[] |
 | spatialRepresentationType | spatial_representation_type[] |
 | topicCategory | topic_category[] |
-| westBoundingLongitude | spatial (as geojson string) |
+| westBoundingLongitude | spatial (core, as geojson string) |
 | eastBoundingLongitude | |
 | southBoundingLatitude | |
 | northBoundingLatitude | |
 | temporalElement | time_period_coverage_start, time_period_coverage_end |
 | maintenanceAndUpdateFrequency | frequency |
-| licence | license_id |
+| licence | license_id (core) |
 | referenceSystemInformation | reference_system |
 | distributorEnglish | distributor.en |
 | distributorFrench | distributor.fr |
-| catalogueType | type (always = 'geo') |
-| ResourceNameEnglish | resources[].name.en |
-| ResourceNameFrench | resources[].name.fr |
-| accessURL | resources[].url |
-| format | resources[].format |
+| catalogueType | type (core, always = 'hnap') |
+| ResourceNameEnglish | resources[].name.en (core) |
+| ResourceNameFrench | resources[].name.fr (core) |
+| accessURL | resources[].url (core) |
+| format | resources[].format (core) |
 | language | resources[].language |
 | contentType | resources[].content |
