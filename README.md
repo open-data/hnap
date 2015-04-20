@@ -44,8 +44,8 @@ The `keywords` object above would contain lists of string values.
 | characterSet | |
 | parentIdentifier | parent_id |
 | hierarchyLevel | hierarchy_level |
-| metadataContactEnglish | |
-| metadataContactFrench | |
+| metadataContactEnglish | metadata_contact.en |
+| metadataContactFrench | metadata_contact.fr |
 | metadataRecordDateStamp | metadata_modified (core) |
 | metadataStandardName | |
 | metadataURI | url (core) |
