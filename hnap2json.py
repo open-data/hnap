@@ -986,7 +986,7 @@ def main():
 	#print "\nJSON\n"
 	#print json.dumps(json_record)
 	utf_8_output = json.dumps(json_record)
-	output = codecs.open('CKAN_JL_Import.jl', 'w', 'utf-8')
+	output = codecs.open('CKAN_JL_Import.jsonl', 'w', 'utf-8')
 	output.write(utf_8_output)
 	output.close()
 
