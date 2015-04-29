@@ -152,7 +152,8 @@
             },
             "contentType": "",
             "language": "",
-            "format": ""
+            "format": "",
+            "url": "http://example.com/file1.txt"
         },
         {
             "ResourceName": {
@@ -160,7 +161,8 @@
             },
             "contentType": "",
             "language": "",
-            "format": ""
+            "format": "",
+            "url": "http://example.com/file2.txt"
         }
     ],
     "metadata_contact": {
