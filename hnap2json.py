@@ -1027,13 +1027,13 @@ def main():
 			print error
 
 	#print "\nJSON\n"
-	#print json.dumps(json_record)
+	#print json.dumps(json_record, ensure_ascii=False, encoding='utf8')
 	utf_8_output = json.dumps(json_record, sort_keys=False, indent=4, separators=(',', ': '))
 	output = codecs.open('CKAN_JL_Import.json', 'w', 'utf-8')
 	output.write(utf_8_output)
 	output.close()
 
-	utf_8_output = json.dumps(json_record)
+	utf_8_output = json.dumps(json_record, ensure_ascii=False, encoding='utf8')
 	output = codecs.open('CKAN_JL_Import.jl', 'w', 'utf-8')
 	output.write(utf_8_output)
 	output.close()
