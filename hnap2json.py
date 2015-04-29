@@ -442,7 +442,7 @@ def main():
 				reportError(organisationName+',"Bad organizationName, no Government of Canada",""')
 			del values[0]
 			for GOC_Div in values:
-				print "FRGOC_DIV:"+GOC_Div
+				#print "FRGOC_DIV:"+GOC_Div
 				termsValue = fetchCLValue(GOC_Div,GC_Registry_of_Applied_Terms)
 				if termsValue:
 					if CKAN_primary_lang == 'en':
@@ -613,13 +613,15 @@ def main():
 			for value in tmp:
 				p = re.compile('^[A-Z][A-Z] [^>]+ > ')
 				value = p.sub( '', value)
-				primary_vals.append(value)
+				if len(value) >= 2:
+					primary_vals.append(value)
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
 			for value in tmp:
 				p = re.compile('^[A-Z][A-Z] [^>]+ > ')
 				value = p.sub( '', value)
-				second_vals.append(value)
+				if len(value) >= 2:
+					second_vals.append(value)
 		if not len(primary_vals):
 			reportError(OGDMES_fileIdentifier+','+'keywords,madatory field missing,""')
 		if not len(second_vals):
@@ -664,7 +666,6 @@ def main():
 			for associationType in tmp:
 				(primary,secondary) = associationType.strip().split(';')
 
-				print "PNS25:"+primary+":"+secondary
 				# Can you find the english CL entry?
 				termsValue = fetchCLValue(primary,napDS_AssociationTypeCode)
 				if not termsValue:
@@ -709,7 +710,6 @@ def main():
 			for spatialRepresentationType in tmp:
 				(primary,secondary) = spatialRepresentationType.strip().split(';')
 
-				#print "PNS27:"+primary+":"+secondary
 				# Can you find the english CL entry?
 				termsValue = fetchCLValue(primary,napMD_SpatialRepresentationTypeCode)
 				if not termsValue:
@@ -827,7 +827,6 @@ def main():
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
 			(primary,secondary) = sanityFirst(tmp).strip().split(';')
 
-			print "PNS34:"+primary+":"+secondary
 			# Can you find the english CL entry?
 			termsValue = fetchCLValue(primary,napMD_MaintenanceFrequencyCode)
 			if not termsValue:
@@ -837,7 +836,7 @@ def main():
 					termsValue = []
 
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
-				json_record['frequency'] = termsValue[0]
+				json_record['frequency'] = termsValue[0].lower()
 				debug_output['34-OGDMES maintenanceAndUpdateFrequency'] = json_record['frequency']
 				#json_record['frequency'][CKAN_primary_lang] = termsValue[0]
 				#json_record['frequency'][CKAN_secondary_lang] = termsValue[1]
@@ -847,7 +846,7 @@ def main():
 		##### OGDMES-35 licence_id
 		##################################################
 		OGDMES_property = 'licence_id'
-		json_record['licence_id'] = 'ca-ogl-lgo'
+		json_record['license_id'] = 'ca-ogl-lgo'
 
 		debug_output['35-OGDMES Licence'] = "Open Government Licence – Canada <linkto: http://open.canada.ca/en/open-government-licence-canada>"
 		#debug_output['35-OGDMES LicenceEnglish'] = "Open Government Licence – Canada <linkto: http://open.canada.ca/en/open-government-licence-canada>"
@@ -956,7 +955,7 @@ def main():
 			resource_no += 1
 
 			json_record_resource = {}
-			json_record_resource['ResourceName'] = {}
+			json_record_resource['name'] = {}
 
 			OGDMES_property = 'Resource['+str(resource_no)+']-ResourceName'
 			tmp = fetchXMLValues(resource,"gmd:name/gco:CharacterString")
@@ -977,6 +976,14 @@ def main():
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
 				json_record_resource['url'] = sanityFirst(tmp)
 				debug_output['40-OGDMES accessURL'] = json_record_resource['url']
+####
+#### DELETE WHEN IT'S LIVE			
+####
+			if not 'url' in json_record_resource or json_record_resource['url'] == '':
+				json_record_resource['url'] = 'http://sample.url/to/a/data.set'
+####
+####
+####
 
 			OGDMES_property = 'Resource['+str(resource_no)+']-description;'
 			tmp = fetchXMLValues(record,"gmd:description/gco:CharacterString")
@@ -985,9 +992,9 @@ def main():
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'format,madatory field missing,""')
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'language,madatory field missing,""')
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'contentType,madatory field missing,""')
-				json_record_resource['format'] = ''
-				json_record_resource['language'] = ''
-				json_record_resource['contentType'] = ''
+				json_record_resource['format'] = 'SAMPLE'
+				json_record_resource['language'] = 'sam; PLE'
+				json_record_resource['contentType'] = 'sampleService'
 				debug_output['41-OGDMES format'] = ''
 				debug_output['42-OGDMES language'] = ''
 				debug_output['43-OGDMES contentType'] = ''
@@ -1022,6 +1029,11 @@ def main():
 	#print "\nJSON\n"
 	#print json.dumps(json_record)
 	utf_8_output = json.dumps(json_record, sort_keys=False, indent=4, separators=(',', ': '))
+	output = codecs.open('CKAN_JL_Import.json', 'w', 'utf-8')
+	output.write(utf_8_output)
+	output.close()
+
+	utf_8_output = json.dumps(json_record)
 	output = codecs.open('CKAN_JL_Import.jl', 'w', 'utf-8')
 	output.write(utf_8_output)
 	output.close()
