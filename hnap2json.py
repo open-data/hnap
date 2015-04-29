@@ -1034,7 +1034,7 @@ def main():
 	output.close()
 
 	utf_8_output = json.dumps(json_record, ensure_ascii=False, encoding='utf8')
-	output = codecs.open('CKAN_JL_Import.jl', 'w', 'utf-8')
+	output = codecs.open('CKAN_JL_Import.jsonl', 'w', 'utf-8')
 	output.write(utf_8_output)
 	output.close()
 
@@ -1521,7 +1521,7 @@ napMD_KeywordTypeCode = {
 }
 
 napMD_MaintenanceFrequencyCode = {
-	'As Needed'   :[u'As Needed',u'Au besoin'],
+	'As Needed'   :[u'As_Needed',u'Au_besoin'],
 	'Continual'   :[u'Continual',u'Continue'],
 	'Daily'       :[u'Daily',u'Quotidien'],
 	'Weekly'      :[u'Weekly',u'Hebdomadaire'],
@@ -1532,11 +1532,11 @@ napMD_MaintenanceFrequencyCode = {
 	'Biannually'  :[u'Biannually',u'Semestriel'],
 	'Annually'    :[u'Annually',u'Annuel'],
 	'Irregular'   :[u'Irregular',u'Irrégulier'],
-	'Not Planned' :[u'Not Planned',u'Non planifié'],
+	'Not Planned' :[u'Not_Planned',u'Non_planifié'],
 	'Unknown'     :[u'Unknown',u'Inconnu'],
 
-	'Au besoin'   :[u'As Needed',u'Au besoin'],
-	'Continue'   :[u'Continual',u'Continue'],
+	'Au besoin'   :[u'As_Needed',u'Au_besoin'],
+	'Continue'    :[u'Continual',u'Continue'],
 	'Daily'       :[u'Daily',u'Quotidien'],
 	'Weekly'      :[u'Weekly',u'Hebdomadaire'],
 	'Fortnightly' :[u'Fortnightly',u'Quinzomadaire'],
@@ -1546,7 +1546,7 @@ napMD_MaintenanceFrequencyCode = {
 	'Biannually'  :[u'Biannually',u'Semestriel'],
 	'Annually'    :[u'Annually',u'Annuel'],
 	'Irregular'   :[u'Irregular',u'Irrégulier'],
-	'Not Planned' :[u'Not Planned',u'Non planifié'],
+	'Not Planned' :[u'Not_Planned',u'Non_planifié'],
 	'Unknown'     :[u'Unknown',u'Inconnu']
 
 }
