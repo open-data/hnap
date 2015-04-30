@@ -783,11 +783,11 @@ def main():
 		GeoJSON = {}
 		GeoJSON['type'] = "MultiPolygon"
 		GeoJSON['coordinates'] = [[[
-    		[json_record['westBoundingLongitude'], json_record['southBoundingLongitude']],
-    		[json_record['eastBoundingLongitude'], json_record['southBoundingLongitude']],
-    		[json_record['eastBoundingLongitude'], json_record['northBoundingLongitude']],
-    		[json_record['westBoundingLongitude'], json_record['northBoundingLongitude']],
-    		[json_record['westBoundingLongitude'], json_record['southBoundingLongitude']]
+    		[float(json_record['westBoundingLongitude']), float(json_record['southBoundingLongitude'])],
+    		[float(json_record['eastBoundingLongitude']), float(json_record['southBoundingLongitude'])],
+    		[float(json_record['eastBoundingLongitude']), float(json_record['northBoundingLongitude'])],
+    		[float(json_record['westBoundingLongitude']), float(json_record['northBoundingLongitude'])],
+    		[float(json_record['westBoundingLongitude']), float(json_record['southBoundingLongitude'])]
     	]]]
 
 		json_record['spatial'] = GeoJSON
