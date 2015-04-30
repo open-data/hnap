@@ -95,30 +95,28 @@
     "id": "c959fb7e-6bac-41dd-a881-5839c354fd47",
     "parent_id": "2107c1a4-dd4d-4c3c-bc6c-51f3d363c4db",
     "spatial": {
-        "type": "MultiPolygon",
+        "type": "Polygon",
         "coordinates": [
             [
                 [
-                    [
-                        -141.003,
-                        41.6766
-                    ],
-                    [
-                        -52.638,
-                        41.6766
-                    ],
-                    [
-                        -52.638,
-                        83.3362
-                    ],
-                    [
-                        -141.003,
-                        83.3362
-                    ],
-                    [
-                        -141.003,
-                        41.6766
-                    ]
+                    -141.003,
+                    41.6766
+                ],
+                [
+                    -52.638,
+                    41.6766
+                ],
+                [
+                    -52.638,
+                    83.3362
+                ],
+                [
+                    -141.003,
+                    83.3362
+                ],
+                [
+                    -141.003,
+                    41.6766
                 ]
             ]
         ]
@@ -131,7 +129,7 @@
     },
     "status": "completed",
     "topic_category": [
-        "Nature and Environment"
+        "environment"
     ],
     "aggregate_identifier": "",
     "responsible_role": "pointOfContact",
@@ -151,7 +149,7 @@
             "name": {
                 "en": "CFIA Emerald Ash Borer Regulated Areas"
             },
-            "language": "sam; PLE",
+            "language": "eng; CAN",
             "format": "SAMPLE"
         },
         {
@@ -160,7 +158,7 @@
             "name": {
                 "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
             },
-            "language": "sam; PLE",
+            "language": "fra; CAN",
             "format": "SAMPLE"
         }
     ],
