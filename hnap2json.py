@@ -782,14 +782,14 @@ def main():
 			debug_output['32-OGDMES northBoundingLongitude'] = sanityFirst(tmp)
 
 		GeoJSON = {}
-		GeoJSON['type'] = "MultiPolygon"
-		GeoJSON['coordinates'] = [[[
+		GeoJSON['type'] = "Polygon"
+		GeoJSON['coordinates'] = [[
     		[float(json_record['westBoundingLongitude']), float(json_record['southBoundingLongitude'])],
     		[float(json_record['eastBoundingLongitude']), float(json_record['southBoundingLongitude'])],
     		[float(json_record['eastBoundingLongitude']), float(json_record['northBoundingLongitude'])],
     		[float(json_record['westBoundingLongitude']), float(json_record['northBoundingLongitude'])],
     		[float(json_record['westBoundingLongitude']), float(json_record['southBoundingLongitude'])]
-    	]]]
+    	]]
 
 		json_record['spatial'] = GeoJSON
 		#debug_output['32-OGDMES temporalElement'] = json_record['westBoundingLongitude']+','+json_record['eastBoundingLongitude']+','+json_record['northBoundingLongitude']+','+json_record['southBoundingLongitude']
@@ -994,7 +994,7 @@ def main():
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'language,madatory field missing,""')
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'contentType,madatory field missing,""')
 				json_record_resource['format'] = 'SAMPLE'
-				json_record_resource['language'] = 'sam; PLE'
+				json_record_resource['language'] = 'eng; CAN'
 				json_record_resource['contentType'] = 'sampleService'
 				debug_output['41-OGDMES format'] = ''
 				debug_output['42-OGDMES language'] = ''
