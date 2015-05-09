@@ -14,17 +14,10 @@ debug_output   = {}
 input_files    = ['data/TBS_V2/aplCANreg_metadata_HNAP_exemple_minimum.xml','data/TBS_V2/aplCANreg_metadata_HNAP_exemple.xml']
 input_file     = 'data/full_populated.xml'
 
-source_hnap    = '...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id='
+records_root = "/gmd:MD_Metadata"
+#records_root = "/csw:GetRecordsResponse/csw:SearchResults/gmd:MD_Metadata"
 
-import argparse
-parser         = argparse.ArgumentParser()
-#parser.add_argument("-jf")
-#parser.add_argument("-jo")
-#parser.add_argument("-af")
-#parser.add_argument("-ao")
-#parser.add_argument("-ef")
-#parser.add_argument("-eo")
-args           = parser.parse_args()
+source_hnap    = '...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id='
 
 import time
 iso_time = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
@@ -46,7 +39,7 @@ from lxml import etree
 #import csv
 
 def fetchXMLArray(objectToXpath,xpath):
-	return objectToXpath.xpath(xpath, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2'})
+	return objectToXpath.xpath(xpath, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2','xsi':'http://www.w3.org/2001/XMLSchema-instance','csw':'http://www.opengis.net/cat/csw/2.0.2'})
 
 def fetchXMLValues(objectToXpath,xpath):
 	values = []
@@ -137,11 +130,14 @@ def main():
 	# Read the file, should be a streamed input in the future
 	root           = etree.parse(input_file)
 	# Parse the root and itterate over each record
-	records = fetchXMLArray(root,"/gmd:MD_Metadata")
+	records = 	fetchXMLArray(root,records_root)
+	#records = fetchXMLArray(root,"/gmd:MD_Metadata")
+	#records = fetchXMLArray(root,"/csw:GetRecordsResponse/csw:SearchResults/gmd:MD_Metadata")
+	json_records = []
 	for record in records:
 
-		json_record = {}
-
+		json_record  = {}
+		debug_output = {}
 
 		##### HNAP CORE LANGUAGE
 		##################################################
@@ -255,31 +251,31 @@ def main():
 		# organizationName
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'OrganizationName',tmp):
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-OrganizationName-'+CKAN_primary_lang,tmp):
 			primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'OrganizationName',tmp):
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-OrganizationName-'+CKAN_secondary_lang,tmp):
 			second_vals.append(sanityFirst(tmp))
 
 		# voice
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'Voice',tmp):
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-Voice-'+CKAN_primary_lang,tmp):
 			primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'Voice',tmp):
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-Voice-'+CKAN_secondary_lang,tmp):
 			second_vals.append(sanityFirst(tmp))
 
 		# electronicMailAddress
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'electronicMailAddress',tmp):
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-electronicMailAddress-'+CKAN_primary_lang,tmp):
 			primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'electronicMailAddress',tmp):
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-electronicMailAddress-'+CKAN_secondary_lang,tmp):
 			second_vals.append(sanityFirst(tmp))
 
 		json_record['metadata_contact'] = {}
@@ -615,6 +611,9 @@ def main():
 				value = p.sub( '', value)
 				if len(value) >= 2:
 					primary_vals.append(value)
+			if not len(primary_vals):
+				reportError(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang+',""')
+
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
 			for value in tmp:
@@ -622,10 +621,9 @@ def main():
 				value = p.sub( '', value)
 				if len(value) >= 2:
 					second_vals.append(value)
-		if not len(primary_vals):
-			reportError(OGDMES_fileIdentifier+','+'keywords,madatory field missing,""')
-		if not len(second_vals):
-			reportError(OGDMES_fileIdentifier+','+'keywords,madatory field missing,""')
+			if not len(second_vals):
+				reportError(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang+',""')
+
 		json_record['keywords'][CKAN_primary_lang] = primary_vals
 		json_record['keywords'][CKAN_secondary_lang] = second_vals
 		debug_output['23-OGDMES descriptiveKeywords'+OGDMES_primary_lang] = ','.join(primary_vals)
@@ -920,9 +918,9 @@ def main():
 			second_vals.append(role_array[1])
 
 		if not len(primary_vals):
-			reportError(OGDMES_fileIdentifier+','+'distributor,madatory field missing,""')
+			reportError(OGDMES_fileIdentifier+','+'distributor,madatory field missing or not found in controlled list,""')
 		if not len(second_vals):
-			reportError(OGDMES_fileIdentifier+','+'distributor,madatory field missing,""')
+			reportError(OGDMES_fileIdentifier+','+'distributor,madatory field missing or not found in controlled list,""')
 
 		json_record['distributor'] = {}
 		json_record['distributor'][CKAN_primary_lang] = ','.join(primary_vals)
@@ -1010,16 +1008,20 @@ def main():
 
 			json_record['resources'].append(json_record_resource)
 
+
+		json_records.append(json_record)
+		print "one:"+str(len(json_records))
+
+
+		print "\nOGDMES\n"
+		#debug_output = SortedDict(debug_output)	
+		for key, value in sorted(debug_output.items()):
+			print key + ':',
+			if isinstance(value, unicode):
+				value = value.encode('utf-8')
+			print value
+
 		continue
-
-	print "\nOGDMES\n"
-
-	#debug_output = SortedDict(debug_output)	
-	for key, value in sorted(debug_output.items()):
-		print key + ':',
-		if isinstance(value, unicode):
-			value = value.encode('utf-8')
-		print value
 
 	if len(error_output) > 0:
 		print "\nERRORS\n"
@@ -1027,16 +1029,19 @@ def main():
 		for error in error_output:
 			print error
 
+	print "two:"+str(len(json_records))
+
 	#print "\nJSON\n"
 	#print json.dumps(json_record, ensure_ascii=False, encoding='utf8')
-	utf_8_output = json.dumps(json_record, sort_keys=False, indent=4, separators=(',', ': '))
 	output = codecs.open('CKAN_JL_Import.json', 'w', 'utf-8')
+	utf_8_output = json.dumps(json_records, sort_keys=False, indent=4, separators=(',', ': '))
 	output.write(utf_8_output)
 	output.close()
 
-	utf_8_output = json.dumps(json_record, ensure_ascii=False, encoding='utf8')
 	output = codecs.open('CKAN_JL_Import.jsonl', 'w', 'utf-8')
-	output.write(utf_8_output)
+	for json_record in json_records:
+		utf_8_output = json.dumps(json_record, ensure_ascii=False, encoding='utf8')
+		output.write(utf_8_output)
 	output.close()
 
 	return 1
