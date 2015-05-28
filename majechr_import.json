@@ -1,0 +1,401 @@
+[
+    {
+        "association_type": "",
+        "characterSet": "2014-12-10",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org/,8.5.5",
+        "position_name": {
+            "fr": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Nom de la position (REF NAP : 5.2.6)]",
+            "en": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Position name (REF NAP : 5.2.6)]"
+        },
+        "individual_name": "[OPTIONAL INFO ADDED FOR TBS MAPPING : contact name (REF NAP : 5.2.6)]",
+        "frequency": "unknown",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Ontario",
+                "Qu\u00e9bec",
+                "For\u00eat",
+                "Donn\u00e9es g\u00e9ographiques"
+            ],
+            "en": [
+                "Canada",
+                "Ontario",
+                "Quebec",
+                "Forests",
+                "Geographic data"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo-fr@RNCan.gc.ca",
+                "city": "city-fr",
+                "country": "country-fr",
+                "administrativeArea": "administrativeArea-fr",
+                "deliveryPoint": "deliveryPoint-fr",
+                "postalCode": "postalCode-fr"
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo-en@NRCan.gc.ca",
+                "city": "city-en",
+                "country": "country-en",
+                "administrativeArea": "administrativeArea-en",
+                "deliveryPoint": "deliveryPoint-en",
+                "postalCode": "postalCode-en"
+            }
+        },
+        "digital_object_identifier": "[OPTIONAL INFO ADDED FOR TBS MAPPING : data identifier (REF NAP : 5.14.6)]",
+        "spatial_representation_type": "Vector",
+        "title": {
+            "fr": "Agrilus planipennis (APL) - Agrile du fr\u00eane - Lieux r\u00e9glement\u00e9s au Canada",
+            "en": "Agrilus planipennis (APL) - Emerald Ash Borer - Canada's Regulated Areas"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "00000001-0000-0000-0000-000000000000",
+        "parent_id": "00000001-0001-0000-0000-000000000000",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -141.003,
+                        41.6766
+                    ],
+                    [
+                        -52.638,
+                        41.6766
+                    ],
+                    [
+                        -52.638,
+                        83.3362
+                    ],
+                    [
+                        -141.003,
+                        83.3362
+                    ],
+                    [
+                        -141.003,
+                        41.6766
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "2014-03-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Agence canadienne d'inspection des aliments",
+            "en": "Health Canada,Canadian Food Inspection Agency"
+        },
+        "status": "completed",
+        "topic_category": [
+            "environment"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2014-12-09",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "9999-09-01",
+        "hierarchy_level": "dataset",
+        "name": "00000001",
+        "date_modified": "2015-01-01",
+        "url": "...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=00000001-0000-0000-0000-000000000000",
+        "notes": {
+            "fr": "Les donn\u00e9es \u00e9num\u00e8rent les zones r\u00e9glement\u00e9es pour l\u2019agrile du fr\u00eane (Agrilus planipennis). Ces zones repr\u00e9sentent des limites des municipalit\u00e9s r\u00e9gionales, municipalit\u00e9s r\u00e9gionales de comt\u00e9 et les limites de canton. Afin de ralentir la propagation de l'agrile du fr\u00eane dans de nouvelles r\u00e9gions, l'Agence canadienne d\u2019inspection des aliments (ACIA) a recours \u00e0 des mesures visant \u00e0 limiter le mouvement des mati\u00e8res potentiellement infest\u00e9es. Le ralentissement de la propagation de l'agrile du fr\u00eane aidera \u00e0 prot\u00e9ger l'environnement et les ressources foresti\u00e8res du Canada, ainsi qu'\u00e0 maintenir l'acc\u00e8s aux march\u00e9s internationaux pour l'industrie foresti\u00e8re et les p\u00e9pini\u00e8res dans les r\u00e9gions non r\u00e9glement\u00e9es de l'Ontario, du Qu\u00e9bec et du reste du Canada.",
+            "en": "The data list the regulated areas for the emerald ash borer (Agrilus planipennis). The areas represent Regional Municipality Boundaries, Regional County Municipalities, and Township boundaries. To slow the spread of the emerald ash borer (EAB) to new areas, the Canadian Food Inspection Agency (CFIA) uses measures to control the movement of potentially infested materials. Slowing the spread of emerald ash borer will protect Canada's environment and forest resources. It also helps keep international markets open to the forest industry and nurseries in non-regulated parts of Ontario and Quebec and in the rest of Canada."
+        },
+        "resources": [
+            {
+                "url": "http://maps.geogratis.gc.ca/wms/emerald_ash_borer_reg_area?service=wms&request=getCapabilities&version=1.3.0&layers=emerald_ash_borer_reg_area",
+                "contentType": "WMS",
+                "name": {
+                    "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
+                    "en": "CFIA Emerald Ash Borer Regulated Areas"
+                },
+                "language": "eng,fra",
+                "format": "XML"
+            },
+            {
+                "url": "http://cartes.geogratis.gc.ca/wms/lieux_reg_agrile_du_frene?service=wms&request=getCapabilities&version=1.3.0&layers=lieux_reg_agrile_du_frene",
+                "contentType": "WMS",
+                "name": {
+                    "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
+                    "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
+                },
+                "language": "eng,fra",
+                "format": "XML"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 661-2638 (Sans Frais au Canada et au \u00c9tats-Unis.),geoginfo-fr@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 661-2638 (Toll Free in Canada and USA.),geoginfo-en@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2014-12-10",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org/,8.5.5",
+        "position_name": {
+            "fr": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Nom de la position (REF NAP : 5.2.6)]",
+            "en": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Position name (REF NAP : 5.2.6)]"
+        },
+        "individual_name": "[OPTIONAL INFO ADDED FOR TBS MAPPING : contact name (REF NAP : 5.2.6)]",
+        "frequency": "unknown",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Ontario",
+                "Qu\u00e9bec",
+                "For\u00eat",
+                "Donn\u00e9es g\u00e9ographiques"
+            ],
+            "en": [
+                "Canada",
+                "Ontario",
+                "Quebec",
+                "Forests",
+                "Geographic data"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo-fr@RNCan.gc.ca",
+                "city": "city-fr",
+                "country": "country-fr",
+                "administrativeArea": "administrativeArea-fr",
+                "deliveryPoint": "deliveryPoint-fr",
+                "postalCode": "postalCode-fr"
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo-en@NRCan.gc.ca",
+                "city": "city-en",
+                "country": "country-en",
+                "administrativeArea": "administrativeArea-en",
+                "deliveryPoint": "deliveryPoint-en",
+                "postalCode": "postalCode-en"
+            }
+        },
+        "digital_object_identifier": "[OPTIONAL INFO ADDED FOR TBS MAPPING : data identifier (REF NAP : 5.14.6)]",
+        "spatial_representation_type": "Vector",
+        "title": {
+            "fr": "Agrilus planipennis (APL) - Agrile du fr\u00eane - Lieux r\u00e9glement\u00e9s au Canada",
+            "en": "Agrilus planipennis (APL) - Emerald Ash Borer - Canada's Regulated Areas"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "00000002-0000-0000-0000-000000000000",
+        "parent_id": "00000002-0001-0000-0000-000000000000",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -141.003,
+                        41.6766
+                    ],
+                    [
+                        -52.638,
+                        41.6766
+                    ],
+                    [
+                        -52.638,
+                        83.3362
+                    ],
+                    [
+                        -141.003,
+                        83.3362
+                    ],
+                    [
+                        -141.003,
+                        41.6766
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "2014-03-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Agence canadienne d'inspection des aliments",
+            "en": "Health Canada,Canadian Food Inspection Agency"
+        },
+        "status": "completed",
+        "topic_category": [
+            "environment"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2014-12-09",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "9999-09-01",
+        "hierarchy_level": "dataset",
+        "name": "00000002",
+        "date_modified": "2015-01-01",
+        "url": "...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=00000002-0000-0000-0000-000000000000",
+        "notes": {
+            "fr": "Les donn\u00e9es \u00e9num\u00e8rent les zones r\u00e9glement\u00e9es pour l\u2019agrile du fr\u00eane (Agrilus planipennis). Ces zones repr\u00e9sentent des limites des municipalit\u00e9s r\u00e9gionales, municipalit\u00e9s r\u00e9gionales de comt\u00e9 et les limites de canton. Afin de ralentir la propagation de l'agrile du fr\u00eane dans de nouvelles r\u00e9gions, l'Agence canadienne d\u2019inspection des aliments (ACIA) a recours \u00e0 des mesures visant \u00e0 limiter le mouvement des mati\u00e8res potentiellement infest\u00e9es. Le ralentissement de la propagation de l'agrile du fr\u00eane aidera \u00e0 prot\u00e9ger l'environnement et les ressources foresti\u00e8res du Canada, ainsi qu'\u00e0 maintenir l'acc\u00e8s aux march\u00e9s internationaux pour l'industrie foresti\u00e8re et les p\u00e9pini\u00e8res dans les r\u00e9gions non r\u00e9glement\u00e9es de l'Ontario, du Qu\u00e9bec et du reste du Canada.",
+            "en": "The data list the regulated areas for the emerald ash borer (Agrilus planipennis). The areas represent Regional Municipality Boundaries, Regional County Municipalities, and Township boundaries. To slow the spread of the emerald ash borer (EAB) to new areas, the Canadian Food Inspection Agency (CFIA) uses measures to control the movement of potentially infested materials. Slowing the spread of emerald ash borer will protect Canada's environment and forest resources. It also helps keep international markets open to the forest industry and nurseries in non-regulated parts of Ontario and Quebec and in the rest of Canada."
+        },
+        "resources": [
+            {
+                "url": "http://maps.geogratis.gc.ca/wms/emerald_ash_borer_reg_area?service=wms&request=getCapabilities&version=1.3.0&layers=emerald_ash_borer_reg_area",
+                "contentType": "WMS",
+                "name": {
+                    "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
+                    "en": "CFIA Emerald Ash Borer Regulated Areas"
+                },
+                "language": "eng,fra",
+                "format": "XML"
+            },
+            {
+                "url": "http://cartes.geogratis.gc.ca/wms/lieux_reg_agrile_du_frene?service=wms&request=getCapabilities&version=1.3.0&layers=lieux_reg_agrile_du_frene",
+                "contentType": "WMS",
+                "name": {
+                    "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
+                    "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
+                },
+                "language": "eng,fra",
+                "format": "XML"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 661-2638 (Sans Frais au Canada et au \u00c9tats-Unis.),geoginfo-fr@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 661-2638 (Toll Free in Canada and USA.),geoginfo-en@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2014-12-10",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org/,8.5.5",
+        "position_name": {
+            "fr": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Nom de la position (REF NAP : 5.2.6)]",
+            "en": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Position name (REF NAP : 5.2.6)]"
+        },
+        "individual_name": "[OPTIONAL INFO ADDED FOR TBS MAPPING : contact name (REF NAP : 5.2.6)]",
+        "frequency": "unknown",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Ontario",
+                "Qu\u00e9bec",
+                "For\u00eat",
+                "Donn\u00e9es g\u00e9ographiques"
+            ],
+            "en": [
+                "Canada",
+                "Ontario",
+                "Quebec",
+                "Forests",
+                "Geographic data"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo-fr@RNCan.gc.ca",
+                "city": "city-fr",
+                "country": "country-fr",
+                "administrativeArea": "administrativeArea-fr",
+                "deliveryPoint": "deliveryPoint-fr",
+                "postalCode": "postalCode-fr"
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo-en@NRCan.gc.ca",
+                "city": "city-en",
+                "country": "country-en",
+                "administrativeArea": "administrativeArea-en",
+                "deliveryPoint": "deliveryPoint-en",
+                "postalCode": "postalCode-en"
+            }
+        },
+        "digital_object_identifier": "[OPTIONAL INFO ADDED FOR TBS MAPPING : data identifier (REF NAP : 5.14.6)]",
+        "spatial_representation_type": "Vector",
+        "title": {
+            "fr": "Agrilus planipennis (APL) - Agrile du fr\u00eane - Lieux r\u00e9glement\u00e9s au Canada",
+            "en": "Agrilus planipennis (APL) - Emerald Ash Borer - Canada's Regulated Areas"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "00000003-0000-0000-0000-000000000000",
+        "parent_id": "00000003-0001-0000-0000-000000000000",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -141.003,
+                        41.6766
+                    ],
+                    [
+                        -52.638,
+                        41.6766
+                    ],
+                    [
+                        -52.638,
+                        83.3362
+                    ],
+                    [
+                        -141.003,
+                        83.3362
+                    ],
+                    [
+                        -141.003,
+                        41.6766
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "2014-03-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Agence canadienne d'inspection des aliments",
+            "en": "Health Canada,Canadian Food Inspection Agency"
+        },
+        "status": "completed",
+        "topic_category": [
+            "environment"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2014-12-09",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "9999-09-01",
+        "hierarchy_level": "dataset",
+        "name": "00000003",
+        "date_modified": "2015-01-01",
+        "url": "...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=00000003-0000-0000-0000-000000000000",
+        "notes": {
+            "fr": "Les donn\u00e9es \u00e9num\u00e8rent les zones r\u00e9glement\u00e9es pour l\u2019agrile du fr\u00eane (Agrilus planipennis). Ces zones repr\u00e9sentent des limites des municipalit\u00e9s r\u00e9gionales, municipalit\u00e9s r\u00e9gionales de comt\u00e9 et les limites de canton. Afin de ralentir la propagation de l'agrile du fr\u00eane dans de nouvelles r\u00e9gions, l'Agence canadienne d\u2019inspection des aliments (ACIA) a recours \u00e0 des mesures visant \u00e0 limiter le mouvement des mati\u00e8res potentiellement infest\u00e9es. Le ralentissement de la propagation de l'agrile du fr\u00eane aidera \u00e0 prot\u00e9ger l'environnement et les ressources foresti\u00e8res du Canada, ainsi qu'\u00e0 maintenir l'acc\u00e8s aux march\u00e9s internationaux pour l'industrie foresti\u00e8re et les p\u00e9pini\u00e8res dans les r\u00e9gions non r\u00e9glement\u00e9es de l'Ontario, du Qu\u00e9bec et du reste du Canada.",
+            "en": "The data list the regulated areas for the emerald ash borer (Agrilus planipennis). The areas represent Regional Municipality Boundaries, Regional County Municipalities, and Township boundaries. To slow the spread of the emerald ash borer (EAB) to new areas, the Canadian Food Inspection Agency (CFIA) uses measures to control the movement of potentially infested materials. Slowing the spread of emerald ash borer will protect Canada's environment and forest resources. It also helps keep international markets open to the forest industry and nurseries in non-regulated parts of Ontario and Quebec and in the rest of Canada."
+        },
+        "resources": [
+            {
+                "url": "http://maps.geogratis.gc.ca/wms/emerald_ash_borer_reg_area?service=wms&request=getCapabilities&version=1.3.0&layers=emerald_ash_borer_reg_area",
+                "contentType": "WMS",
+                "name": {
+                    "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
+                    "en": "CFIA Emerald Ash Borer Regulated Areas"
+                },
+                "language": "eng,fra",
+                "format": "XML"
+            },
+            {
+                "url": "http://cartes.geogratis.gc.ca/wms/lieux_reg_agrile_du_frene?service=wms&request=getCapabilities&version=1.3.0&layers=lieux_reg_agrile_du_frene",
+                "contentType": "WMS",
+                "name": {
+                    "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
+                    "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
+                },
+                "language": "eng,fra",
+                "format": "XML"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 661-2638 (Sans Frais au Canada et au \u00c9tats-Unis.),geoginfo-fr@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 661-2638 (Toll Free in Canada and USA.),geoginfo-en@NRCan.gc.ca"
+        }
+    }
+]
