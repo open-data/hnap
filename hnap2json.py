@@ -993,12 +993,14 @@ def main():
 							languages_out.append('eng; CAN')
 						if language.strip() == 'fra':
 							languages_out.append('fra; CAN')
+					#language_str = ','.join(languages_out)
+					language_str = languages_out[0]
 
 					json_record_resource['format'] = res_format.strip()
-					json_record_resource['language'] = ','.join(languages_out)
+					json_record_resource['language'] = language_str
 					json_record_resource['contentType'] = res_contentType.strip()
 					debug_output['41-OGDMES Resource['+str(resource_no)+'] format'] = res_format.strip()
-					debug_output['42-OGDMES Resource['+str(resource_no)+'] language'] = ','.join(languages_out)
+					debug_output['42-OGDMES Resource['+str(resource_no)+'] language'] = language_str
 					debug_output['43-OGDMES Resource['+str(resource_no)+'] contentType'] = res_contentType.strip()
 			else:
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'format,madatory field missing,""')
