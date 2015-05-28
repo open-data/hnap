@@ -985,11 +985,20 @@ def main():
 					debug_output['43-OGDMES Resource['+str(resource_no)+'] contentType'] = 'err'
 				else:
 					(res_contentType,res_format,res_language) = description_text.split(';')
+
+					languages_in  = res_language.strip().split(',')
+					languages_out = []
+					for language in languages_in:
+						if language.strip() == 'eng':
+							languages_out.append('eng; CAN')
+						if language.strip() == 'fra':
+							languages_out.append('fra; CAN')
+
 					json_record_resource['format'] = res_format.strip()
-					json_record_resource['language'] = res_language.strip()
+					json_record_resource['language'] = ','.join(languages_out)
 					json_record_resource['contentType'] = res_contentType.strip()
 					debug_output['41-OGDMES Resource['+str(resource_no)+'] format'] = res_format.strip()
-					debug_output['42-OGDMES Resource['+str(resource_no)+'] language'] = res_language.strip()
+					debug_output['42-OGDMES Resource['+str(resource_no)+'] language'] = ','.join(languages_out)
 					debug_output['43-OGDMES Resource['+str(resource_no)+'] contentType'] = res_contentType.strip()
 			else:
 				reportError(OGDMES_fileIdentifier+','+OGDMES_property+'format,madatory field missing,""')

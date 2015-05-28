@@ -113,7 +113,7 @@
                     "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
                     "en": "CFIA Emerald Ash Borer Regulated Areas"
                 },
-                "language": "eng,fra",
+                "language": "eng; CAN,fra; CAN",
                 "format": "XML"
             },
             {
@@ -123,7 +123,7 @@
                     "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
                     "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
                 },
-                "language": "eng,fra",
+                "language": "eng; CAN,fra; CAN",
                 "format": "XML"
             }
         ],
@@ -246,7 +246,7 @@
                     "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
                     "en": "CFIA Emerald Ash Borer Regulated Areas"
                 },
-                "language": "eng,fra",
+                "language": "eng; CAN,fra; CAN",
                 "format": "XML"
             },
             {
@@ -256,7 +256,7 @@
                     "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
                     "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
                 },
-                "language": "eng,fra",
+                "language": "eng; CAN,fra; CAN",
                 "format": "XML"
             }
         ],
@@ -379,7 +379,7 @@
                     "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
                     "en": "CFIA Emerald Ash Borer Regulated Areas"
                 },
-                "language": "eng,fra",
+                "language": "eng; CAN,fra; CAN",
                 "format": "XML"
             },
             {
@@ -389,7 +389,7 @@
                     "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
                     "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
                 },
-                "language": "eng,fra",
+                "language": "eng; CAN,fra; CAN",
                 "format": "XML"
             }
         ],
