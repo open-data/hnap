@@ -1,31 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#napMD_KeywordTypeCode
-#napMD_SpatialRepresentationTypeCode
-#napDS_AssociationTypeCode
-#napCI_RoleCode
-#GC_Registry_of_Applied_Terms
-
-json_output    = {}
 error_output   = []
 debug_output   = {}
 
-input_files    = ['data/TBS_V2/aplCANreg_metadata_HNAP_exemple_minimum.xml','data/TBS_V2/aplCANreg_metadata_HNAP_exemple.xml']
-
 # Source Files an matching root
-
-#input_file     = 'data/csw_with_parameter.xml'
-#records_root   = "/csw:GetRecordByIdResponse/gmd:MD_Metadata"
-
-#input_file     = 'data/b3fdcd34-4533-415f-8f83-68f17f9d5d68.xml'
-#records_root   = "/csw:GetRecordByIdResponse/gmd:MD_Metadata"
 
 #input_file     = 'data/majechr_source.xml'
 #records_root   = "/gmd:MD_Metadata"
-
-#input_file     = 'data/hnap_import.xml'
-input_file     = 'data/majechr_source.xml'
+input_file     = 'data/hnap_import.xml'
 records_root   = "/csw:GetRecordsResponse/csw:SearchResults/gmd:MD_Metadata"
 
 # Output files
@@ -33,7 +16,7 @@ records_root   = "/csw:GetRecordsResponse/csw:SearchResults/gmd:MD_Metadata"
 output_json    = 'majechr_import.json'
 output_jl      = 'majechr_import.jsonl'
 
-source_hnap    = '...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id='
+source_hnap    = 'csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id='
 
 import time
 iso_time = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
