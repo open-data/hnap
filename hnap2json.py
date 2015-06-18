@@ -352,14 +352,14 @@ def main():
 					input_type = input_type.strip()
 					#print "TYPE:"+input_type
 					if input_type == u'publication':
-						if sanityDate(OGDMES_fileIdentifier+',date_published',inVal):
-							json_record['date_published'] = inVal
+						if sanityDate(OGDMES_fileIdentifier+',date_published',maskDate(inVal)):
+							json_record['date_published'] = maskDate(inVal)
 							debug_output['14-OGDMES date_published'] = json_record['date_published']
 							break
 
 					if input_type == u'revision' or input_type == u'révision':
-						if sanityDate(OGDMES_fileIdentifier+',date_modified',inVal):
-							json_record['date_modified'] = inVal
+						if sanityDate(OGDMES_fileIdentifier+',date_modified',maskDate(inVal)):
+							json_record['date_modified'] = maskDate(inVal)
 							debug_output['15-OGDMES date_modified'] = json_record['date_modified']
 							break
 
