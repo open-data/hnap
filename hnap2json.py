@@ -33,12 +33,7 @@ import codecs
 # XML Parsing
 from lxml import etree
 
-# Old imports, predecesor script
-#import os
-#import csv
-
 def fetchXMLArray(objectToXpath,xpath):
-	#return objectToXpath.xpath(xpath, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2','xsi':'http://www.w3.org/2001/XMLSchema-instance','csw':'http://www.opengis.net/cat/csw/2.0.2'})
 	return objectToXpath.xpath(xpath, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2','csw':'http://www.opengis.net/cat/csw/2.0.2'})
 def fetchXMLValues(objectToXpath,xpath):
 	values = []
@@ -50,6 +45,15 @@ def fetchXMLValues(objectToXpath,xpath):
 			else:
 				values.append(namePart.text.strip())
 	return values
+def fetchXMLAttribute(objectToXpath,xpath,attribute):
+	# Easy to miss this, clean and combine
+	clean_xpath     = xpath.rstrip('/')
+	clean_attribute = xpath.lstrip('@')
+	# Access to an attribute through lxml is
+	# xpath/to/key/@key_attribute
+	# e.g.:
+	# html/body/@background-color
+	return objectToXpath.xpath(xpath+'/@'+attribute, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2','csw':'http://www.opengis.net/cat/csw/2.0.2'})
 def fetchCLValue(SRCH_key,CL_array):
 	p = re.compile(' ')
 	SRCH_key = SRCH_key.lower()
