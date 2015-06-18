@@ -219,9 +219,6 @@ def main():
 
 		# organizationName
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
-
-		print "tmp-------------:"+sanityFirst(tmp)
-
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-OrganizationName-'+CKAN_primary_lang,tmp):
 			primary_vals.append(sanityFirst(tmp))
@@ -232,13 +229,20 @@ def main():
 
 		# voice
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-Voice-'+CKAN_primary_lang,tmp):
-			primary_vals.append(sanityFirst(tmp))
+		for value in tmp:
+			primary_vals.append(value)
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-Voice-'+CKAN_secondary_lang,tmp):
-			second_vals.append(sanityFirst(tmp))
+		for value in tmp:
+			second_vals.append(value)
+
+#		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
+#		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
+#		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-Voice-'+CKAN_primary_lang,tmp):
+#			primary_vals.append(sanityFirst(tmp))
+#		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+#		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
+#		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-Voice-'+CKAN_secondary_lang,tmp):
+#			second_vals.append(sanityFirst(tmp))
 
 		# electronicMailAddress
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
