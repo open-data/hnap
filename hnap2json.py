@@ -955,7 +955,24 @@ def main():
 			sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
 				description_text = sanityFirst(tmp).strip()
-				#print "PREUNPACK:"+OGDMES_fileIdentifier+":"+description_text
+				
+				# ADAPTATION #1
+				# The source METADATA (HNAP) does not seem to have the metadata required to describe
+				# the resouces for the client side.  It does not track resource content type, format
+				# or language.  Without these it's impossible to create a proper download interface.
+				#
+				# This is to be corrected in HNAP by Sept. 1st 2015, more likely we review it then.
+				# 
+				# From: Mitchell, Cindy [mailto:Cindy.Mitchell@NRCan-RNCan.gc.ca] 
+				# Sent: February-27-15 10:39 AM
+				# To: Majewski, Chris; Hilt, Alannah; Martin, Marie-Eve: NRCAN.RNCAN; Matson, Arthur: NRCAN.RNCAN; Rupert, James: NRCAN.RNCAN; Rushforth, Peter: NRCAN.RNCAN; Weech, Mike: EC.EC; Shaw, Shaw: EC.EC; Bourgon, Jean-Francois: NRCAN.RNCAN; Thompson, Ross: SC.SC; Casovan, Ashley; Roussel, Pascale: NRCAN.RNCAN
+				# Cc: Shaw, Shaw: EC.EC
+				# Subject: RE: GUIDANCE FOR 5.20.5 DESCRIPTION : OGDMES vs HNAP Mapping Part 2
+				# 
+				# Oh have mercy my friend J.
+ 				# 
+				# How about September 1?
+				#
 				if description_text.count(';') != 2:
 					reportError(OGDMES_fileIdentifier+','+OGDMES_property+'contentType,"Error with source, should be contentType;format;lang,lang","'+description_text+'"')
 					reportError(OGDMES_fileIdentifier+','+OGDMES_property+'format,"Error with source, should be contentType;format;lang,lang","'+description_text+'"')
