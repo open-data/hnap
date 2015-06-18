@@ -873,48 +873,37 @@ def main():
 		primary_vals = []
 		second_vals	= []
 
+		OGDMES_subproperty = 'organizationName'
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):
-			primary_vals.append(sanityFirst(tmp))
-		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):
-			primary_vals.append(sanityFirst(tmp))
-
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
+				primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
-			second_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
+				second_vals.append(sanityFirst(tmp))
+
+		OGDMES_subproperty = 'electronicMailAddress'
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
+				primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
-			second_vals.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
+				second_vals.append(sanityFirst(tmp))
 
-		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
-		singlePrime  = ''
-		singleSecond = ''
-		if tmp != None and len(tmp) > 0:
-			(primary,secondary) = sanityFirst(tmp).strip().split(';')
-			singlePrime = primary.strip()
-			singleSecond = secondary.strip()
-		role_array = []
-		for (key,values) in napCI_RoleCode.items():
-			if key == primary:
-				role_array = values
-				break
-			if key == secondary:
-				role_array = values
-				break
-		if len(role_array) > 1:
-			primary_vals.append(role_array[0])
-			second_vals.append(role_array[1])
-
-		if not len(primary_vals):
-			reportError(OGDMES_fileIdentifier+','+'distributor,madatory field missing or not found in controlled list,""')
-		if not len(second_vals):
-			reportError(OGDMES_fileIdentifier+','+'distributor,madatory field missing or not found in controlled list,""')
+		OGDMES_subproperty = 'role'
+		tmp = fetchXMLAttribute(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode","codeListValue")
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,tmp):
+				# Can you find the CL entry?
+				termsValue = fetchCLValue(tmp[0],napCI_RoleCode)
+				if not termsValue:
+					termsValue = []
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,termsValue):
+					primary_vals.append(termsValue[0])
+					second_vals.append(termsValue[1])
 
 		json_record['distributor'] = {}
 		json_record['distributor'][CKAN_primary_lang] = ','.join(primary_vals)
