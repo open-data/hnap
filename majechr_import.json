@@ -1,401 +1,1894 @@
 [
     {
         "association_type": "",
-        "characterSet": "2014-12-10",
-        "reference_system": "EPSG:4617,http://www.epsg-registry.org/,8.5.5",
+        "characterSet": "2015-04-14",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
-            "fr": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Nom de la position (REF NAP : 5.2.6)]",
-            "en": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Position name (REF NAP : 5.2.6)]"
+            "fr": "",
+            "en": ""
         },
-        "individual_name": "[OPTIONAL INFO ADDED FOR TBS MAPPING : contact name (REF NAP : 5.2.6)]",
-        "frequency": "unknown",
+        "individual_name": "",
+        "frequency": "as_needed",
         "keywords": {
             "fr": [
                 "Canada",
-                "Ontario",
-                "Qu\u00e9bec",
-                "For\u00eat",
-                "Donn\u00e9es g\u00e9ographiques"
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "Toponymes canadiens",
+                "NGC",
+                "Canvec",
+                "CanVec+",
+                "Cartographie",
+                "Donn\u00e9es g\u00e9ographiques",
+                "Carte",
+                "Toponymie"
             ],
             "en": [
                 "Canada",
-                "Ontario",
-                "Quebec",
-                "Forests",
-                "Geographic data"
+                "Earth Sciences",
+                "GeoBase",
+                "Canadian Geographical Names",
+                "CGN",
+                "Canvec",
+                "CanVec+",
+                "Cartography",
+                "Geographic data",
+                "Maps",
+                "Toponymy"
             ]
         },
         "contactInfo": {
             "fr": {
-                "electronicMailAddress": "geoginfo-fr@RNCan.gc.ca",
-                "city": "city-fr",
-                "country": "country-fr",
-                "administrativeArea": "administrativeArea-fr",
-                "deliveryPoint": "deliveryPoint-fr",
-                "postalCode": "postalCode-fr"
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
             },
             "en": {
-                "electronicMailAddress": "geoginfo-en@NRCan.gc.ca",
-                "city": "city-en",
-                "country": "country-en",
-                "administrativeArea": "administrativeArea-en",
-                "deliveryPoint": "deliveryPoint-en",
-                "postalCode": "postalCode-en"
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
             }
         },
-        "digital_object_identifier": "[OPTIONAL INFO ADDED FOR TBS MAPPING : data identifier (REF NAP : 5.14.6)]",
-        "spatial_representation_type": "Vector",
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
         "title": {
-            "fr": "Agrilus planipennis (APL) - Agrile du fr\u00eane - Lieux r\u00e9glement\u00e9s au Canada",
-            "en": "Agrilus planipennis (APL) - Emerald Ash Borer - Canada's Regulated Areas"
+            "fr": "RNCan - Noms g\u00e9ographiques du Canada",
+            "en": "NRCan - Canadian Geographical Names"
         },
         "distributor": {
             "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
             "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
         },
-        "id": "00000001-0000-0000-0000-000000000000",
-        "parent_id": "00000001-0001-0000-0000-000000000000",
+        "id": "b3fdcd34-4533-415f-8f83-68f17f9d5d68",
+        "parent_id": "",
         "spatial": {
             "type": "Polygon",
             "coordinates": [
                 [
                     [
-                        -141.003,
-                        41.6766
+                        -142.0,
+                        41.683
                     ],
                     [
-                        -52.638,
-                        41.6766
+                        -50.5,
+                        41.683
                     ],
                     [
-                        -52.638,
-                        83.3362
+                        -50.5,
+                        83.5
                     ],
                     [
-                        -141.003,
-                        83.3362
+                        -142.0,
+                        83.5
                     ],
                     [
-                        -141.003,
-                        41.6766
+                        -142.0,
+                        41.683
                     ]
                 ]
             ]
         },
-        "time_period_coverage_start": "2014-03-01",
+        "time_period_coverage_start": "1897-01-01",
         "type": "maps",
         "responsible_organization": {
-            "fr": "Agence canadienne d'inspection des aliments",
-            "en": "Health Canada,Canadian Food Inspection Agency"
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
         },
-        "status": "completed",
+        "status": "onGoing",
         "topic_category": [
-            "environment"
+            "location"
         ],
         "aggregate_identifier": "",
         "responsible_role": "pointOfContact",
-        "date_published": "2014-12-09",
+        "date_published": "2015-01-01",
         "license_id": "ca-ogl-lgo",
-        "time_period_coverage_end": "9999-09-01",
+        "time_period_coverage_end": "9999-09-09",
         "hierarchy_level": "dataset",
-        "name": "00000001",
-        "date_modified": "2015-01-01",
-        "url": "...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=00000001-0000-0000-0000-000000000000",
+        "name": "b3fdcd34",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=b3fdcd34-4533-415f-8f83-68f17f9d5d68",
         "notes": {
-            "fr": "Les donn\u00e9es \u00e9num\u00e8rent les zones r\u00e9glement\u00e9es pour l\u2019agrile du fr\u00eane (Agrilus planipennis). Ces zones repr\u00e9sentent des limites des municipalit\u00e9s r\u00e9gionales, municipalit\u00e9s r\u00e9gionales de comt\u00e9 et les limites de canton. Afin de ralentir la propagation de l'agrile du fr\u00eane dans de nouvelles r\u00e9gions, l'Agence canadienne d\u2019inspection des aliments (ACIA) a recours \u00e0 des mesures visant \u00e0 limiter le mouvement des mati\u00e8res potentiellement infest\u00e9es. Le ralentissement de la propagation de l'agrile du fr\u00eane aidera \u00e0 prot\u00e9ger l'environnement et les ressources foresti\u00e8res du Canada, ainsi qu'\u00e0 maintenir l'acc\u00e8s aux march\u00e9s internationaux pour l'industrie foresti\u00e8re et les p\u00e9pini\u00e8res dans les r\u00e9gions non r\u00e9glement\u00e9es de l'Ontario, du Qu\u00e9bec et du reste du Canada.",
-            "en": "The data list the regulated areas for the emerald ash borer (Agrilus planipennis). The areas represent Regional Municipality Boundaries, Regional County Municipalities, and Township boundaries. To slow the spread of the emerald ash borer (EAB) to new areas, the Canadian Food Inspection Agency (CFIA) uses measures to control the movement of potentially infested materials. Slowing the spread of emerald ash borer will protect Canada's environment and forest resources. It also helps keep international markets open to the forest industry and nurseries in non-regulated parts of Ontario and Quebec and in the rest of Canada."
+            "fr": "La Base de donn\u00e9es toponymiques du Canada (BDTC) est la banque de donn\u00e9es regroupant les toponymes canadiens g\u00e9r\u00e9e par le secr\u00e9tariat de la Commission de toponymie du Canada (CTC) du minist\u00e8re des Ressources naturelles Canada. On y emmagasine les toponymes et leurs attributs qui ont \u00e9t\u00e9 approuv\u00e9s par la CTC) afin que ces enregistrements faisant autorit\u00e9 puissent \u00eatre consult\u00e9s par le personnel du gouvernement et le public. Le sous-ensemble des donn\u00e9es de la BDTC qui est offert pour l'extraction et la visualisation sur le Portail G\u00e9ogratis est compos\u00e9 des toponymes \u00e0 jour officiellement approuv\u00e9s. Il est d\u00e9sign\u00e9 par l'expression : jeu de donn\u00e9es des Toponymes canadiens, niveau 1 (TC1). Des attributs additionnels pour ce jeu de donn\u00e9es ainsi que de l'information concernant les noms historiques sont disponibles sur le service de recherche de toponyme du Canada \u00e0 http://www.rncan.gc.ca/sciences-terre/geographie/noms-lieux/9171. Le domaine g\u00e9ographique du jeu de donn\u00e9es couvre la masse continentale du Canada et ses \u00e9tendues d'eau. Le domaine temporel couvre 1897 jusqu'\u00e0 aujourd'hui. Les formats du fichier de sortie disponibles pour le produit sont : GML (Geography Markup Language), texte, SHAPE (ESRI) et KML.",
+            "en": "The Canadian Geographical Names Database (CGNDB) is the database of Canada's geographical names, maintained by the secretariat of the Geographical Names Board of Canada (GNBC), part of Natural Resources Canada. Its purpose is to store names and their attributes that have been approved by the GNBC so, that these authoritative records are available for government and public use. The subset of CGNDB data offered through the Geogratis Portal for data extraction and visualization consists of current officially approved names, and is referred to as the Canadian Geographical Names, Level 1 (CGN1) dataset. Additional attributes for this dataset as well as information on formerly approved names are available through the Canadian Geographical Names Search Service at http://www.nrcan.gc.ca/earth-sciences/geography/place-names/9170.  The geographic extent of this dataset is the Canadian landmass and water bodies. The temporal extent of the data is from 1897 to present. The available output file formats for the product are: GML (Geography Markup Language), text ASCII, SHAPE (ESRI) and KML (Keyhole Markup Language)."
         },
         "resources": [
             {
-                "url": "http://maps.geogratis.gc.ca/wms/emerald_ash_borer_reg_area?service=wms&request=getCapabilities&version=1.3.0&layers=emerald_ash_borer_reg_area",
-                "contentType": "WMS",
+                "url": "http://205.195.196.111/wms/geonames_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=geographical_names&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
                 "name": {
-                    "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
-                    "en": "CFIA Emerald Ash Borer Regulated Areas"
+                    "fr": "Service Web en anglais; RNCan - Noms g\u00e9ographiques du Canada",
+                    "en": "English Web Service; NRCan - Canadian Geographical Names"
                 },
                 "language": "eng; CAN",
-                "format": "XML"
+                "format": "WMS"
             },
             {
-                "url": "http://cartes.geogratis.gc.ca/wms/lieux_reg_agrile_du_frene?service=wms&request=getCapabilities&version=1.3.0&layers=lieux_reg_agrile_du_frene",
-                "contentType": "WMS",
+                "url": "http://205.195.196.111/wms/geonames_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=noms_geographiques&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
                 "name": {
-                    "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
-                    "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Noms g\u00e9ographiques du Canada",
+                    "en": "French Web Service; NRCan - Canadian Geographical Names"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format SHP, FGDB ou GML (GeoGratis-Outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 SHP, FGDB or GML formats (GeoGratis-Data Extraction tool)"
                 },
                 "language": "eng; CAN",
-                "format": "XML"
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format SHP, FGDB ou GML (GeoGratis-Outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 SHP, FGDB or GML formats (GeoGratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/fgdb/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers FGDB pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged FGDB files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "FGDB / GDB"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/shp/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers Shape pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged Shape files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/gml/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GML pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged GML files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "GML"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit CanVec+",
+                    "en": "Documentation related to CanVec+ product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
             }
         ],
         "metadata_contact": {
-            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 661-2638 (Sans Frais au Canada et au \u00c9tats-Unis.),geoginfo-fr@RNCan.gc.ca",
-            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 661-2638 (Toll Free in Canada and USA.),geoginfo-en@NRCan.gc.ca"
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
         }
     },
     {
         "association_type": "",
-        "characterSet": "2014-12-10",
-        "reference_system": "EPSG:4617,http://www.epsg-registry.org/,8.5.5",
+        "characterSet": "2015-04-16",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
-            "fr": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Nom de la position (REF NAP : 5.2.6)]",
-            "en": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Position name (REF NAP : 5.2.6)]"
+            "fr": "",
+            "en": ""
         },
-        "individual_name": "[OPTIONAL INFO ADDED FOR TBS MAPPING : contact name (REF NAP : 5.2.6)]",
+        "individual_name": "",
         "frequency": "unknown",
         "keywords": {
             "fr": [
                 "Canada",
-                "Ontario",
-                "Qu\u00e9bec",
-                "For\u00eat",
-                "Donn\u00e9es g\u00e9ographiques"
+                "Centrale \u00e9lectrique",
+                "Cartographie",
+                "\u00c9lectricit\u00e9",
+                "\u00c9nergie",
+                "Production d'\u00e9nergie"
             ],
             "en": [
                 "Canada",
-                "Ontario",
-                "Quebec",
-                "Forests",
-                "Geographic data"
+                "Electric power stations",
+                "Cartography",
+                "Electricity",
+                "Energy",
+                "Energy production"
             ]
         },
         "contactInfo": {
             "fr": {
-                "electronicMailAddress": "geoginfo-fr@RNCan.gc.ca",
-                "city": "city-fr",
-                "country": "country-fr",
-                "administrativeArea": "administrativeArea-fr",
-                "deliveryPoint": "deliveryPoint-fr",
-                "postalCode": "postalCode-fr"
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "",
+                "country": "",
+                "administrativeArea": "",
+                "deliveryPoint": "",
+                "postalCode": ""
             },
             "en": {
-                "electronicMailAddress": "geoginfo-en@NRCan.gc.ca",
-                "city": "city-en",
-                "country": "country-en",
-                "administrativeArea": "administrativeArea-en",
-                "deliveryPoint": "deliveryPoint-en",
-                "postalCode": "postalCode-en"
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "",
+                "country": "",
+                "administrativeArea": "",
+                "deliveryPoint": "",
+                "postalCode": ""
             }
         },
-        "digital_object_identifier": "[OPTIONAL INFO ADDED FOR TBS MAPPING : data identifier (REF NAP : 5.14.6)]",
-        "spatial_representation_type": "Vector",
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
         "title": {
-            "fr": "Agrilus planipennis (APL) - Agrile du fr\u00eane - Lieux r\u00e9glement\u00e9s au Canada",
-            "en": "Agrilus planipennis (APL) - Emerald Ash Borer - Canada's Regulated Areas"
+            "fr": "RNCan - Stations de g\u00e9n\u00e9ration d`\u00e9lectricit\u00e9",
+            "en": "NRCan - Electric Generating Stations"
         },
         "distributor": {
             "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
             "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
         },
-        "id": "00000002-0000-0000-0000-000000000000",
-        "parent_id": "00000002-0001-0000-0000-000000000000",
+        "id": "e2f54cbd-d17c-4627-be30-ea6ed94dba8b",
+        "parent_id": "",
         "spatial": {
             "type": "Polygon",
             "coordinates": [
                 [
                     [
-                        -141.003,
-                        41.6766
+                        -141.00299,
+                        41.67555
                     ],
                     [
-                        -52.638,
-                        41.6766
+                        -52.61736,
+                        41.67555
                     ],
                     [
-                        -52.638,
-                        83.3362
+                        -52.61736,
+                        83.11388
                     ],
                     [
-                        -141.003,
-                        83.3362
+                        -141.00299,
+                        83.11388
                     ],
                     [
-                        -141.003,
-                        41.6766
+                        -141.00299,
+                        41.67555
                     ]
                 ]
             ]
         },
-        "time_period_coverage_start": "2014-03-01",
+        "time_period_coverage_start": "2007-01-01",
         "type": "maps",
         "responsible_organization": {
-            "fr": "Agence canadienne d'inspection des aliments",
-            "en": "Health Canada,Canadian Food Inspection Agency"
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
         },
         "status": "completed",
         "topic_category": [
-            "environment"
+            "transport"
         ],
         "aggregate_identifier": "",
         "responsible_role": "pointOfContact",
-        "date_published": "2014-12-09",
+        "date_published": "2015-01-01",
         "license_id": "ca-ogl-lgo",
-        "time_period_coverage_end": "9999-09-01",
+        "time_period_coverage_end": "2007-12-31",
         "hierarchy_level": "dataset",
-        "name": "00000002",
-        "date_modified": "2015-01-01",
-        "url": "...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=00000002-0000-0000-0000-000000000000",
+        "name": "e2f54cbd",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=e2f54cbd-d17c-4627-be30-ea6ed94dba8b",
         "notes": {
-            "fr": "Les donn\u00e9es \u00e9num\u00e8rent les zones r\u00e9glement\u00e9es pour l\u2019agrile du fr\u00eane (Agrilus planipennis). Ces zones repr\u00e9sentent des limites des municipalit\u00e9s r\u00e9gionales, municipalit\u00e9s r\u00e9gionales de comt\u00e9 et les limites de canton. Afin de ralentir la propagation de l'agrile du fr\u00eane dans de nouvelles r\u00e9gions, l'Agence canadienne d\u2019inspection des aliments (ACIA) a recours \u00e0 des mesures visant \u00e0 limiter le mouvement des mati\u00e8res potentiellement infest\u00e9es. Le ralentissement de la propagation de l'agrile du fr\u00eane aidera \u00e0 prot\u00e9ger l'environnement et les ressources foresti\u00e8res du Canada, ainsi qu'\u00e0 maintenir l'acc\u00e8s aux march\u00e9s internationaux pour l'industrie foresti\u00e8re et les p\u00e9pini\u00e8res dans les r\u00e9gions non r\u00e9glement\u00e9es de l'Ontario, du Qu\u00e9bec et du reste du Canada.",
-            "en": "The data list the regulated areas for the emerald ash borer (Agrilus planipennis). The areas represent Regional Municipality Boundaries, Regional County Municipalities, and Township boundaries. To slow the spread of the emerald ash borer (EAB) to new areas, the Canadian Food Inspection Agency (CFIA) uses measures to control the movement of potentially infested materials. Slowing the spread of emerald ash borer will protect Canada's environment and forest resources. It also helps keep international markets open to the forest industry and nurseries in non-regulated parts of Ontario and Quebec and in the rest of Canada."
+            "fr": "Une centrale \u00e9lectrique est une installation industrielle qui a \u00e9t\u00e9 construite et est exploit\u00e9e pour produire de l\u2019\u00e9lectricit\u00e9. Les donn\u00e9es montrent les 916 centrales \u00e9lectriques exploit\u00e9es en 2007, parmi lesquelles on trouve 479 centrales hydro\u00e9lectriques, 375 centrales thermiques (combustion, combustion interne et vapeur), 7 centrales nucl\u00e9aires, 54 parcs d\u2019\u00e9oliennes et une usine d\u2019\u00e9nergie mar\u00e9motrice.",
+            "en": "A generating station is an industrial facility built and operated to generate electricity. Data shows the 916 generating stations (power plants) operating in 2007. There were 479 hydroelectric stations, 375 thermal plants (combustion, internal combustion and steam), 7 nuclear plants, 54 wind turbines and 1 tidal power plant."
         },
         "resources": [
             {
-                "url": "http://maps.geogratis.gc.ca/wms/emerald_ash_borer_reg_area?service=wms&request=getCapabilities&version=1.3.0&layers=emerald_ash_borer_reg_area",
-                "contentType": "WMS",
+                "url": "http://205.195.196.111/wms/generating_stations_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=generating_station&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
                 "name": {
-                    "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
-                    "en": "CFIA Emerald Ash Borer Regulated Areas"
+                    "fr": "Service Web en anglais; RNCan - Stations de g\u00e9n\u00e9ration d`\u00e9lectricit\u00e9",
+                    "en": "English Web Service; NRCan - Electric Generating Stations"
                 },
                 "language": "eng; CAN",
-                "format": "XML"
+                "format": "WMS"
             },
             {
-                "url": "http://cartes.geogratis.gc.ca/wms/lieux_reg_agrile_du_frene?service=wms&request=getCapabilities&version=1.3.0&layers=lieux_reg_agrile_du_frene",
-                "contentType": "WMS",
+                "url": "http://205.195.196.111/wms/generating_stations_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=centrale_electrique&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
                 "name": {
-                    "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
-                    "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Stations de g\u00e9n\u00e9ration d`\u00e9lectricit\u00e9",
+                    "en": "French Web Service; NRCan - Electric Generating Stations"
                 },
-                "language": "eng; CAN",
-                "format": "XML"
+                "language": "fra; CAN",
+                "format": "WMS"
             }
         ],
         "metadata_contact": {
-            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 661-2638 (Sans Frais au Canada et au \u00c9tats-Unis.),geoginfo-fr@RNCan.gc.ca",
-            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 661-2638 (Toll Free in Canada and USA.),geoginfo-en@NRCan.gc.ca"
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
         }
     },
     {
         "association_type": "",
-        "characterSet": "2014-12-10",
-        "reference_system": "EPSG:4617,http://www.epsg-registry.org/,8.5.5",
+        "characterSet": "2015-04-14",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
-            "fr": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Nom de la position (REF NAP : 5.2.6)]",
-            "en": "[OPTIONAL INFO ADDED FOR TBS MAPPING : Position name (REF NAP : 5.2.6)]"
+            "fr": "",
+            "en": ""
         },
-        "individual_name": "[OPTIONAL INFO ADDED FOR TBS MAPPING : contact name (REF NAP : 5.2.6)]",
-        "frequency": "unknown",
+        "individual_name": "",
+        "frequency": "not_planned",
         "keywords": {
             "fr": [
                 "Canada",
-                "Ontario",
-                "Qu\u00e9bec",
-                "For\u00eat",
-                "Donn\u00e9es g\u00e9ographiques"
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "Couverture du sol",
+                "circa 2000",
+                "Sciences de la terre",
+                "Cartographie",
+                "G\u00e9ographie",
+                "Donn\u00e9es g\u00e9ographiques",
+                "Syst\u00e8me d'information g\u00e9ographique",
+                "G\u00e9omatique",
+                "Topographie"
             ],
             "en": [
                 "Canada",
-                "Ontario",
-                "Quebec",
-                "Forests",
-                "Geographic data"
+                "Earth Sciences",
+                "GeoBase",
+                "Land Cover",
+                "circa 2000",
+                "Earth sciences",
+                "Cartography",
+                "Geography",
+                "Geographic data",
+                "Geographic information systems",
+                "Geomatics",
+                "Topography"
             ]
         },
         "contactInfo": {
             "fr": {
-                "electronicMailAddress": "geoginfo-fr@RNCan.gc.ca",
-                "city": "city-fr",
-                "country": "country-fr",
-                "administrativeArea": "administrativeArea-fr",
-                "deliveryPoint": "deliveryPoint-fr",
-                "postalCode": "postalCode-fr"
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
             },
             "en": {
-                "electronicMailAddress": "geoginfo-en@NRCan.gc.ca",
-                "city": "city-en",
-                "country": "country-en",
-                "administrativeArea": "administrativeArea-en",
-                "deliveryPoint": "deliveryPoint-en",
-                "postalCode": "postalCode-en"
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
             }
         },
-        "digital_object_identifier": "[OPTIONAL INFO ADDED FOR TBS MAPPING : data identifier (REF NAP : 5.14.6)]",
-        "spatial_representation_type": "Vector",
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
         "title": {
-            "fr": "Agrilus planipennis (APL) - Agrile du fr\u00eane - Lieux r\u00e9glement\u00e9s au Canada",
-            "en": "Agrilus planipennis (APL) - Emerald Ash Borer - Canada's Regulated Areas"
+            "fr": "RNCan - Couverture du sol, circa 2000-vectorielle du Canada",
+            "en": "NRCan \u2013 Canadian Land Cover, circa 2000-Vector"
         },
         "distributor": {
             "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
             "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
         },
-        "id": "00000003-0000-0000-0000-000000000000",
-        "parent_id": "00000003-0001-0000-0000-000000000000",
+        "id": "97126362-5a85-4fe0-9dc2-915464cfdbb7",
+        "parent_id": "",
         "spatial": {
             "type": "Polygon",
             "coordinates": [
                 [
                     [
-                        -141.003,
-                        41.6766
+                        -141.0,
+                        43.0
                     ],
                     [
-                        -52.638,
-                        41.6766
+                        -52.0,
+                        43.0
                     ],
                     [
-                        -52.638,
-                        83.3362
+                        -52.0,
+                        83.0
                     ],
                     [
-                        -141.003,
-                        83.3362
+                        -141.0,
+                        83.0
                     ],
                     [
-                        -141.003,
-                        41.6766
+                        -141.0,
+                        43.0
                     ]
                 ]
             ]
         },
-        "time_period_coverage_start": "2014-03-01",
+        "time_period_coverage_start": "1997-01-01",
         "type": "maps",
         "responsible_organization": {
-            "fr": "Agence canadienne d'inspection des aliments",
-            "en": "Health Canada,Canadian Food Inspection Agency"
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
         },
         "status": "completed",
         "topic_category": [
-            "environment"
+            "imagery_base_maps_earth_cover"
         ],
         "aggregate_identifier": "",
         "responsible_role": "pointOfContact",
-        "date_published": "2014-12-09",
+        "date_published": "2015-01-01",
         "license_id": "ca-ogl-lgo",
-        "time_period_coverage_end": "9999-09-01",
+        "time_period_coverage_end": "2005-01-01",
         "hierarchy_level": "dataset",
-        "name": "00000003",
-        "date_modified": "2015-01-01",
-        "url": "...GeoNetworkServer.../csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=00000003-0000-0000-0000-000000000000",
+        "name": "97126362",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=97126362-5a85-4fe0-9dc2-915464cfdbb7",
         "notes": {
-            "fr": "Les donn\u00e9es \u00e9num\u00e8rent les zones r\u00e9glement\u00e9es pour l\u2019agrile du fr\u00eane (Agrilus planipennis). Ces zones repr\u00e9sentent des limites des municipalit\u00e9s r\u00e9gionales, municipalit\u00e9s r\u00e9gionales de comt\u00e9 et les limites de canton. Afin de ralentir la propagation de l'agrile du fr\u00eane dans de nouvelles r\u00e9gions, l'Agence canadienne d\u2019inspection des aliments (ACIA) a recours \u00e0 des mesures visant \u00e0 limiter le mouvement des mati\u00e8res potentiellement infest\u00e9es. Le ralentissement de la propagation de l'agrile du fr\u00eane aidera \u00e0 prot\u00e9ger l'environnement et les ressources foresti\u00e8res du Canada, ainsi qu'\u00e0 maintenir l'acc\u00e8s aux march\u00e9s internationaux pour l'industrie foresti\u00e8re et les p\u00e9pini\u00e8res dans les r\u00e9gions non r\u00e9glement\u00e9es de l'Ontario, du Qu\u00e9bec et du reste du Canada.",
-            "en": "The data list the regulated areas for the emerald ash borer (Agrilus planipennis). The areas represent Regional Municipality Boundaries, Regional County Municipalities, and Township boundaries. To slow the spread of the emerald ash borer (EAB) to new areas, the Canadian Food Inspection Agency (CFIA) uses measures to control the movement of potentially infested materials. Slowing the spread of emerald ash borer will protect Canada's environment and forest resources. It also helps keep international markets open to the forest industry and nurseries in non-regulated parts of Ontario and Quebec and in the rest of Canada."
+            "fr": "Les donn\u00e9es de la Couverture du sol sont le r\u00e9sultat de la vectorisation de donn\u00e9es matricielles th\u00e9matiques issues de la classification d'ortho-images Landsat 5 et Landsat 7 des zones foresti\u00e8res et agricoles du Canada et des territoires du Nord. La couverture foresti\u00e8re provient du projet d'Observation de la Terre pour le d\u00e9veloppement durable des for\u00eats (OTDD), initiative du Service canadien des for\u00eats (SCF), de concert avec l'Agence spatiale canadienne (ASC) et r\u00e9alis\u00e9e en partenariat avec les provinces et les territoires. La couverture agricole provient du Service national d'information sur les terres et les eaux (SNITE) d'Agriculture et Agroalimentaire Canada (AAC). La couverture du sol des territoires du Nord a \u00e9t\u00e9 r\u00e9alis\u00e9e par le Centre canadien de t\u00e9l\u00e9d\u00e9tection (CCT).   Les donn\u00e9es de couverture du sol sont classifi\u00e9es selon une l\u00e9gende harmonis\u00e9e des l\u00e9gendes des partenaires. Cette l\u00e9gende est principalement bas\u00e9e sur celle d\u00e9crite dans le \u00ab EOSD Land Cover Classification Legend Report \u00bb, r\u00e9sultat de la collaboration entre le SCF et AAC. Certaines classes propres au Nord ont toutefois \u00e9t\u00e9 ajout\u00e9es dans la l\u00e9gende de CSC2000-V afin de respecter les interpr\u00e9tations des experts du Nord.  Les donn\u00e9es de Couverture du sol vectoris\u00e9es sont le plus pr\u00e8s de la source (donn\u00e9es matricielles d'origine) que possible. Elles diff\u00e8rent n\u00e9anmoins l\u00e9g\u00e8rement puisqu'une certaine g\u00e9n\u00e9ralisation a d\u00fb \u00eatre effectu\u00e9e sur les donn\u00e9es matricielles avant la vectorisation ainsi que sur les donn\u00e9es vectorielles r\u00e9sultantes afin d'am\u00e9liorer la qualit\u00e9 de repr\u00e9sentation visuelle (dimensions minimales, lissage des contours de polygones, g\u00e9om\u00e9trie).",
+            "en": "Land Cover information is the result of vectorization of raster thematic data originating from classified Landsat 5 and Landsat 7 ortho-images, for agricultural and forest areas of Canada, and for Northern Territories. The forest cover was produced by the Earth Observation for Sustainable Development (EOSD) project, an initiative of the Canadian Forest Service (CFS) with the collaboration of the Canadian Space Agency (CSA) and in partnership with the provincial and territorial governments. The agricultural coverage is produced by the National Land and Water Information Service (NLWIS) of Agriculture and Agri-Food Canada (AAFC). Northern Territories land cover was realized by the Canadian Centre of Remote Sensing (CCRS).  Land Cover data are classified according to a harmonized legend build from the partner's legends. This legend is principally based on the legend described in following publication: EOSD publication: EOSD Land Cover Classification Legend Report, on which CFS and AAFC collaborated. Some classes related to Northern environments where added in order to meet the interpretation of the Northern land cover classification experts.  Land Cover vector data are closest as possible to the source (original raster data). Slight differences can occur because the raster data goes through a data portrayal before being vectorized in order to enhance visual representation such as minimum size, smoothness of polygons and geometry."
         },
         "resources": [
             {
-                "url": "http://maps.geogratis.gc.ca/wms/emerald_ash_borer_reg_area?service=wms&request=getCapabilities&version=1.3.0&layers=emerald_ash_borer_reg_area",
-                "contentType": "WMS",
+                "url": "http://205.195.196.111/wms/landcover_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=landcover_csc2000_2&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
                 "name": {
-                    "fr": "FR - CFIA Emerald Ash Borer Regulated Areas",
-                    "en": "CFIA Emerald Ash Borer Regulated Areas"
+                    "fr": "Service Web en anglais; RNCan - Couverture du sol, circa 2000-vectorielle du Canada",
+                    "en": "English Web Service; NRCan - Canadian Land Cover, circa 2000-Vector"
                 },
                 "language": "eng; CAN",
-                "format": "XML"
+                "format": "WMS"
             },
             {
-                "url": "http://cartes.geogratis.gc.ca/wms/lieux_reg_agrile_du_frene?service=wms&request=getCapabilities&version=1.3.0&layers=lieux_reg_agrile_du_frene",
-                "contentType": "WMS",
+                "url": "http://205.195.196.111/wms/landcover_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=couverture_sol_csc2000_2&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
                 "name": {
-                    "fr": "FR - ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane",
-                    "en": "ACIA Lieux r\u00e8glement\u00e9s de l'agrile du fr\u00eane"
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Couverture du sol, circa 2000-vectorielle du Canada",
+                    "en": "French Web Service; NRCan - Canadian Land Cover, circa 2000-Vector"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
                 },
                 "language": "eng; CAN",
-                "format": "XML"
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/fgdb/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers FGDB pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged FGDB files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "FGDB / GDB"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/shp/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers Shape pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged Shape files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/gml/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GML pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged GML files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "GML"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit CanVec+",
+                    "en": "Documentation related to CanVec+ product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
             }
         ],
         "metadata_contact": {
-            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (800) 661-2638 (Sans Frais au Canada et au \u00c9tats-Unis.),geoginfo-fr@RNCan.gc.ca",
-            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (800) 661-2638 (Toll Free in Canada and USA.),geoginfo-en@NRCan.gc.ca"
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-05-13",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "as_needed",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "MNSC",
+                "MNE",
+                "Sciences de la terre",
+                "Cartographie",
+                "G\u00e9ographie",
+                "Donn\u00e9es g\u00e9ographiques",
+                "Syst\u00e8me d'information g\u00e9ographique",
+                "G\u00e9omatique",
+                "Topographie"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "GeoBase",
+                "CDSM",
+                "DEM",
+                "Earth sciences",
+                "Cartography",
+                "Geography",
+                "Geographic data",
+                "Geographic information systems",
+                "Geomatics",
+                "Topography"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "grid",
+        "title": {
+            "fr": "RNCan - Mod\u00e8le num\u00e9rique de surface du Canada",
+            "en": "NRCan \u2013 Canadian Digital Surface Model"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "768570f8-5761-498a-bd6a-315eb6cc023d",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -140.0,
+                        41.0
+                    ],
+                    [
+                        -52.0,
+                        41.0
+                    ],
+                    [
+                        -52.0,
+                        60.0
+                    ],
+                    [
+                        -140.0,
+                        60.0
+                    ],
+                    [
+                        -140.0,
+                        41.0
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "2000-01-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "onGoing",
+        "topic_category": [
+            "elevation"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "2000-01-01",
+        "hierarchy_level": "dataset",
+        "name": "768570f8",
+        "spatialRepresentationType": "grid",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=768570f8-5761-498a-bd6a-315eb6cc023d",
+        "notes": {
+            "fr": "Le Mod\u00e8le num\u00e9rique de surface du Canada (MNSC) fait partie du syst\u00e8me d'altim\u00e9trie con\u00e7u par Ressources naturelles Canada afin de mieux r\u00e9pondre aux besoins des utilisateurs de donn\u00e9es et de produits d'\u00e9l\u00e9vation. Le MNSC \u00e0 0,75 seconde (~20 m) est un produit d\u00e9riv\u00e9 du mod\u00e8le num\u00e9rique de surface (MNS) original \u00e0 1 seconde (30 m) du Shuttle Radar Topographic Mission (SRTM). Dans ces donn\u00e9es, les \u00e9l\u00e9vations sont capt\u00e9es au sommet des \u00e9difices, arbres, structures et autres objets, plut\u00f4t qu'au sol. Une mosa\u00efque du MNSC peut \u00eatre obtenue pour une r\u00e9gion pr\u00e9d\u00e9finie ou d\u00e9finie par l'utilisateur. La couverture et la r\u00e9solution des mosa\u00efques varient selon l'\u00e9tendue de la r\u00e9gion demand\u00e9e. Des produits d\u00e9riv\u00e9s tels que des cartes de pente, de relief ombrag\u00e9 et de relief ombrag\u00e9 en couleurs peuvent aussi \u00eatre g\u00e9n\u00e9r\u00e9s sur demande.",
+            "en": "The Canadian Digital Surface Model (CDSM) is part of Natural Resources Canada's altimetry system designed to better meet the users' needs for elevation data and products. The 0.75-second (~20 m) CDSM consists of a derived product from the original 1-second (30 m) Shuttle Radar Topographic Mission (SRTM) digital surface model (DSM). In these data, the elevations are captured at the top of buildings, trees, structures, and other objects rather than at ground level. A CDSM mosaic can be obtained for a pre-defined or user-defined extent. The coverage and resolution of a mosaic varies according to the extent of the requested area. Derived products such as slope, shaded relief and colour shaded relief maps can also be generated on demand."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/elevation_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=cdsm.color-shaded-relief&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - Mod\u00e8le num\u00e9rique de surface du Canada",
+                    "en": "English Web Service; NRCan - Canadian Digital Surface Model"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/elevation_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=cdsm.color-shaded-relief&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Mod\u00e8le num\u00e9rique de surface du Canada",
+                    "en": "French Web Service; NRCan - Canadian Digital Surface Model"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction?layers=cdsm",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format GeoTIFF (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 GeoTIFF format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "eng; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction?layers=cdsm",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format GeoTIFF (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 GeoTIFF format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/cdsm",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers TIFF pr\u00e9-emball\u00e9s",
+                    "en": "Pre-packaged TIFF files"
+                },
+                "language": "eng; CAN",
+                "format": "TIFF"
+            },
+            {
+                "url": "http://ftp2.cits.rncan.gc.ca/pub/cdsm/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit MNSC",
+                    "en": "Documentation related to CDSM product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-04-14",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "irregular",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "RHN",
+                "BNDT",
+                "Canvec",
+                "CanVec+",
+                "Hydrographie",
+                "Cours d'eau",
+                "Bassin hydrologique"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "GeoBase",
+                "NHN",
+                "NTDB",
+                "Canvec",
+                "CanVec+",
+                "Hydrography",
+                "Watercourses",
+                "Watersheds"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
+        "title": {
+            "fr": "RNCan - R\u00e9seau hydro simplifi\u00e9 du Canada  - 1/50 000",
+            "en": "NRCan - Canadian Simplified Hydro Network - 1:50 000"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "9d96e8c9-22fe-4ad2-b5e8-94a6991b744b",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -141.0,
+                        41.5
+                    ],
+                    [
+                        -43.0,
+                        41.5
+                    ],
+                    [
+                        -43.0,
+                        84.0
+                    ],
+                    [
+                        -141.0,
+                        84.0
+                    ],
+                    [
+                        -141.0,
+                        41.5
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "1944-01-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "completed",
+        "topic_category": [
+            "imagery_base_maps_earth_cover"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "2014-01-01",
+        "hierarchy_level": "dataset",
+        "name": "9d96e8c9",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=9d96e8c9-22fe-4ad2-b5e8-94a6991b744b",
+        "notes": {
+            "fr": "Le R\u00e9seau hydro simplifi\u00e9 du Canada - 1/50 000 provient du th\u00e8me hydrographie du produit CanVec+. Il vise \u00e0 fournir une description g\u00e9om\u00e9trique de qualit\u00e9 et un ensemble d'attributs de base sur les \u00e9l\u00e9ments hydrographiques, sans couture (seamless) sur l\u2019ensemble du Canada.\nC'est un produit multi-source provenant principalement de l'initiative G\u00e9oBase. Il contient des donn\u00e9es g\u00e9ospatiales de qualit\u00e9 (actuelles, pr\u00e9cises et coh\u00e9rentes) des ph\u00e9nom\u00e8nes hydrographiques canadiens.\nIl offre une information topographique en format vectoriel bas\u00e9e sur les normes internationales en g\u00e9omatique. Le filamentaire d'\u00e9coulement inf\u00e9r\u00e9 et les \u00eeles sont exclues pour le service Web WMS.",
+            "en": "The Canadian Simplified Hydro Network 1:50 000 comes from the Hydrography theme of Canvec+ product. It focuses on providing a quality geometric description and a set of basic attributes on Canadian hydrographic element, seamlessly across Canada.\nIt is a multi-source product coming mainly from the GeoBase initiative. It contains quality geospatial data (current, accurate, and consistent) of Canadian hydrographic phenomena.\nIt offers quality topographical information in vector format that comply with international geomatics standards. The inferred network linear flow and the islands are excluded for the WMS web service."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/hydrography_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=hydro_features&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - R\u00e9seau hydro simplifi\u00e9 du Canada - 1/50 000",
+                    "en": "English Web Service; NRCan - Canadian Simplified Hydro Network - 1:50 000"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/hydrography_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=hydro_entitees&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - R\u00e9seau hydro simplifi\u00e9 du Canada - 1/50 000",
+                    "en": "French Web Service; NRCan - Canadian Simplified Hydro Network - 1:50 000"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "eng; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/fgdb/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers FGDB pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged FGDB files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "FGDB / GDB"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/shp/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers Shape pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged Shape files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/gml/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GML pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged GML files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "GML"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit CanVec+",
+                    "en": "Documentation related to CanVec+ product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-04-15",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "irregular",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "RRN",
+                "BNDT",
+                "CanVec",
+                "CanVec+",
+                "Transport",
+                "R\u00e9seau routier",
+                "Transport routier"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "GeoBase",
+                "NRN",
+                "NTDB",
+                "CanVec",
+                "CanVec+",
+                "Transport",
+                "Road networks",
+                "Road transport"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
+        "title": {
+            "fr": "RNCan - R\u00e9seau routier du Canada  - 1/50 000",
+            "en": "NRCan - Canadian Road Network - 1:50 000"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "3d282116-e556-400c-9306-ca1a3cada77f",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -141.0027151,
+                        41.6765556
+                    ],
+                    [
+                        -52.6247294,
+                        41.6765556
+                    ],
+                    [
+                        -52.6247294,
+                        76.4278035
+                    ],
+                    [
+                        -141.0027151,
+                        76.4278035
+                    ],
+                    [
+                        -141.0027151,
+                        41.6765556
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "1979-07-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "completed",
+        "topic_category": [
+            "transport"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "2014-12-01",
+        "hierarchy_level": "dataset",
+        "name": "3d282116",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=3d282116-e556-400c-9306-ca1a3cada77f",
+        "notes": {
+            "fr": "Le R\u00e9seau routier du Canada - 1/50 000 provient du th\u00e8me Transport du produit CanVec+. Il vise \u00e0 fournir une description g\u00e9om\u00e9trique de qualit\u00e9 et un ensemble d'attributs de base sur les routes canadiennes, sans couture (seamless) sur l\u2019ensemble du Canada.\nLe R\u00e9seau routier du Canada est un produit multi-source provenant principalement de l'initiative G\u00e9oBase. Il contient des donn\u00e9es g\u00e9ospatiales de qualit\u00e9 (actuelles, pr\u00e9cises et coh\u00e9rentes) des ph\u00e9nom\u00e8nes routiers canadiens (incluant la liaison par transbordeur afin d'assurer un r\u00e9seau routier continu).\nLe R\u00e9seau routier du Canada offre une information topographique en format vectoriel bas\u00e9e sur les normes internationales en g\u00e9omatique.",
+            "en": "The Canadian Road Network - 1:50 000 comes from the Transport theme of CanVec+ product. It focuses on providing a quality geometric description and a set of basic attributes on Canadian roads, seamlessly across Canada.\nThe Canadian Road Network is a multi-source product coming mainly from the GeoBase initiative. It contains quality geospatial data (current, accurate, and consistent) of Canadian road phenomena (including ferry connection for the purpose of road network continuity).\nThe Canadian Road Network offers quality topographical information in vector format that comply with international geomatics standards."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/roads_en?service=WMS&request=GetCapabilities&version=1.3.0&layers=roads&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - R\u00e9seau routier du Canada  - 1/50 000",
+                    "en": "English Web Service; NRCan - Canadian Road Network - 1:50 000"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/roads_fr?service=WMS&request=GetCapabilities&version=1.3.0&layers=routes&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - R\u00e9seau routier du Canada - 1/50 000",
+                    "en": "French Web Service; NRCan - Canadian Road Network - 1:50 000"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "eng; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format SHP, FGDB ou GML (Geogratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 SHP, FGDB or GML format (Geogratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/fgdb/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers FGDB pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged FGDB files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "FGDB / GDB"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/shp/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers Shape pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged Shape files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/gml/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GML pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged GML files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "GML"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit CanVec+",
+                    "en": "Documentation related to CanVec+ product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-04-14",
+        "reference_system": "EPSG:32619,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "not_planned",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "Landsat",
+                "Landsat7",
+                "Sciences de la terre",
+                "Cartographie",
+                "G\u00e9ographie",
+                "Donn\u00e9es g\u00e9ographiques",
+                "Syst\u00e8me d'information g\u00e9ographique",
+                "G\u00e9omatique",
+                "Satellite",
+                "T\u00e9l\u00e9d\u00e9tection"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "Landsat",
+                "Landsat7",
+                "Earth sciences",
+                "Cartography",
+                "Geography",
+                "Geographic data",
+                "Geographic information systems",
+                "Geomatics",
+                "Satellites",
+                "Remote sensing"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "grid",
+        "title": {
+            "fr": "RNCan - Imagerie Landsat 7 orthorectifi\u00e9e du Canada",
+            "en": "NRCan \u2013 Landsat 7 Orthorectified Imagery over Canada"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "4d1b8b24-7c37-4fb8-a12c-888aa3023596",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -140.0,
+                        42.0
+                    ],
+                    [
+                        -52.0,
+                        42.0
+                    ],
+                    [
+                        -52.0,
+                        85.0
+                    ],
+                    [
+                        -140.0,
+                        85.0
+                    ],
+                    [
+                        -140.0,
+                        42.0
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "1999-01-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "completed",
+        "topic_category": [
+            "imagery_base_maps_earth_cover"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "2003-01-01",
+        "hierarchy_level": "dataset",
+        "name": "4d1b8b24",
+        "spatialRepresentationType": "grid",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=4d1b8b24-7c37-4fb8-a12c-888aa3023596",
+        "notes": {
+            "fr": "Cet ensemble de donn\u00e9es constitue un jeu complet d'ortho-images sans nuage (moins de 10 %) couvrant la masse continentale canadienne. Le jeu de donn\u00e9es a \u00e9t\u00e9 cr\u00e9\u00e9 avec les donn\u00e9es de contr\u00f4le les plus pr\u00e9cises disponibles au moment de sa cr\u00e9ation. L'imagerie a \u00e9t\u00e9 corrig\u00e9e \u00e0 partir soit des donn\u00e9es de l'a\u00e9rotriangulation f\u00e9d\u00e9rale et des donn\u00e9es provinciales, soit, en cas de non-disponibilit\u00e9, \u00e0 partir des donn\u00e9es BNDT les plus pr\u00e9cises. L'objectif est d'obtenir une pr\u00e9cision de 30 m\u00e8tres ou sup\u00e9rieure dans le sud et de 50 m\u00e8tres ou sup\u00e9rieure dans le nord avec un niveau de confiance de 90 %. La pr\u00e9cision est \u00e9valu\u00e9e pour chaque jeu de donn\u00e9es d'ortho-images. Les donn\u00e9es de contr\u00f4le, qui ont \u00e9t\u00e9 extraites de sources comme celles mentionn\u00e9es plus haut, peuvent \u00eatre des donn\u00e9es vectorielles d'intersections de routes ou des centro\u00efdes de lacs ou d'\u00eeles. Dans certains cas, l'intersection de la ligne centrale d'une rivi\u00e8re de surface peut avoir \u00e9t\u00e9 utilis\u00e9e. Les points de contr\u00f4le sont r\u00e9partis de mani\u00e8re homog\u00e8ne \u00e0 l'int\u00e9rieur de l'image dans des secteurs sp\u00e9cifiques. Les secteurs se trouvent dans le pourtour de l'image, dans les \u00e9l\u00e9vations les plus basses et les plus hautes de l'image, ainsi que dans les secteurs de recouvrement des images adjacentes.",
+            "en": "The orthoimage data set is a complete set of cloud-free (less than 10%) orthoimages covering the Canadian landmass and created with the most accurate control data available at the time of creation. The imagery has been corrected with either provincial and aerial triangulation data or, if not available, the most accurate NTDB data. The objective is to obtain accuracy of 30 metres or better in the South and 50 metres or better in the North for a 90% level of confidence. The accuracy is evaluated for each orthoimage data set. The control data, which has been extracted from sources as mentioned above, can consist of road intersection vector data or lake/island centroids. In some cases the intersection of the centre line of surficial river may have been used. The control points are distributed homogeneously within the image in specific sectors. Sectors are located in the surround of the image, in the lowest and highest elevation area of the image, and in all other areas in which overlapping image base sectors are located."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/canimage_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=canimage&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - Imagerie Landsat 7 orthorectifi\u00e9e du Canada",
+                    "en": "English Web Service; NRCan - Landsat 7 Orthorectified Imagery over Canada"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/canimage_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=canimage&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Imagerie Landsat 7 orthorectifi\u00e9e du Canada",
+                    "en": "French Web Service; NRCan - Landsat 7 Orthorectified Imagery over Canada"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "ftp://http://ftp2.cits.rncan.gc.ca/pub/geott/landsat_7/ortho//",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GeoTIFF pr\u00e9-emball\u00e9s",
+                    "en": "Pre-packaged GeoTIFF files ()"
+                },
+                "language": "eng; CAN",
+                "format": "GeoTIFF"
+            },
+            {
+                "url": "ftp://http://ftp2.cits.rncan.gc.ca/pub/geott/landsat_7/ortho/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit orthoimages Landsat7",
+                    "en": "Documentation related to Landsat7 orthoimages product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-04-14",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "irregular",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "RFN",
+                "BNDT",
+                "Canvec",
+                "CanVec+",
+                "Transport",
+                "R\u00e9seau ferroviaire",
+                "Transport ferroviaire",
+                "Installations ferroviaires",
+                "Industrie du transport ferroviaire"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "GeoBase",
+                "NRWN",
+                "NTDB",
+                "Canvec",
+                "CanVec+",
+                "Transport",
+                "Railway networks",
+                "Rail transport",
+                "Railway installations",
+                "Rail transport industry"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
+        "title": {
+            "fr": "RNCan - R\u00e9seau ferroviaire du Canada  - 1/50 000",
+            "en": "NRCan - Canadian Railway Network - 1:50 000"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "ac26807e-a1e8-49fa-87bf-451175a859b8",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -136.7703383,
+                        40.8478212
+                    ],
+                    [
+                        -60.0314949,
+                        40.8478212
+                    ],
+                    [
+                        -60.0314949,
+                        60.8577134
+                    ],
+                    [
+                        -136.7703383,
+                        60.8577134
+                    ],
+                    [
+                        -136.7703383,
+                        40.8478212
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "2012-03-23",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "completed",
+        "topic_category": [
+            "transport"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "2014-01-01",
+        "hierarchy_level": "dataset",
+        "name": "ac26807e",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=ac26807e-a1e8-49fa-87bf-451175a859b8",
+        "notes": {
+            "fr": "Le R\u00e9seau ferroviaire du Canada  - 1/50 000 provient du th\u00e8me Transport du produit CanVec+. Il vise \u00e0 fournir une description g\u00e9om\u00e9trique de qualit\u00e9 et un ensemble d'attributs de base sur les voies ferr\u00e9es canadiennes, sans couture (seamless) sur l\u2019ensemble du Canada.\nLe R\u00e9seau ferroviaire du Canada est un produit multi-source provenant principalement de l'initiative G\u00e9oBase. Il contient des donn\u00e9es g\u00e9ospatiales de qualit\u00e9 (actuelles, pr\u00e9cises et coh\u00e9rentes) des ph\u00e9nom\u00e8nes ferroviaires canadiens (incluant la liaison par transbordeur afin d'assurer un r\u00e9seau ferroviaire continu).\nLe R\u00e9seau ferroviaire du Canada offre une information topographique en format vectoriel bas\u00e9e sur les normes internationales en g\u00e9omatique.",
+            "en": "The Canadian Railway Network - 1:50 000 comes from the Transport theme of CanVec+ product. It focuses on providing a quality geometric description and a set of basic attributes on Canadian railways, seamlessly across Canada.\nThe Canadian Railway Network is a multi-source product coming mainly from the GeoBase initiative. It contains quality geospatial data (current, accurate, and consistent) of Canadian railway phenomena (including ferry connection for the purpose of railway network continuity).\nThe Canadian Railway Network offers quality topographical information in vector format that comply with international geomatics standards."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/railway_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=railway&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - R\u00e9seau ferroviaire du Canada - 1/50 000",
+                    "en": "English Web Service; NRCan - Canadian Railway Network - 1:50 000"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/railway_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=railway&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - R\u00e9seau ferroviaire du Canada  - 1/50 000",
+                    "en": "French Web Service; NRCan - Canadian Railway Network - 1:50 000"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "eng; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format SHP, FGDB ou GML (GeoGratis-outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/fgdb/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers FGDB pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged FGDB files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "FGDB / GDB"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/shp/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers Shape pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged Shape files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/gml/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GML pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged GML files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "GML"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit CanVec+",
+                    "en": "Documentation related to CanVec+ product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-05-07",
+        "reference_system": "EPSG::4269,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "not_planned",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "Index vectoriels du syst\u00e8me national de r\u00e9f\u00e9rence cartographique du Canada",
+                "SNRC",
+                "Sciences de la terre",
+                "Cartographie",
+                "G\u00e9ographie",
+                "Donn\u00e9es g\u00e9ographiques",
+                "Syst\u00e8me d'information g\u00e9ographique",
+                "G\u00e9omatique",
+                "Topographie",
+                "Toponymie",
+                "Carte",
+                "Carte g\u00e9ographique",
+                "Carte topographique"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "Vector Indexes of the National Topographic System of Canada",
+                "NTS",
+                "Earth sciences",
+                "Cartography",
+                "Geography",
+                "Geographic data",
+                "Geographic information systems",
+                "Geomatics",
+                "Topography",
+                "Toponymy",
+                "Maps",
+                "Geographical maps",
+                "Topographical maps"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
+        "title": {
+            "fr": "RNCan - Syst\u00e8me national de r\u00e9f\u00e9rence cartographique du Canada",
+            "en": "NRCan \u2013 Canadian National Topographic System"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "055919c2-101e-4329-bfd7-1d0c333c0e62",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -141.0,
+                        41.5
+                    ],
+                    [
+                        -43.0,
+                        41.5
+                    ],
+                    [
+                        -43.0,
+                        84.0
+                    ],
+                    [
+                        -141.0,
+                        84.0
+                    ],
+                    [
+                        -141.0,
+                        41.5
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "2015-01-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "completed",
+        "topic_category": [
+            "imagery_base_maps_earth_cover"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "9999-09-09",
+        "hierarchy_level": "dataset",
+        "name": "055919c2",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=055919c2-101e-4329-bfd7-1d0c333c0e62",
+        "notes": {
+            "fr": "Les cartes topographiques r\u00e9alis\u00e9es par Ressources naturelles Canada sont \u00e9tablies suivant le Syst\u00e8me national de r\u00e9f\u00e9rence cartographique (SNRC) du Canada. La r\u00e9gion couverte par un feuillet cartographique est d\u00e9termin\u00e9e par sa latitude et sa longitude. Les index sont distribu\u00e9s selon trois \u00e9chelles : 1/1 000 000, 1/250 000 et 1/50 000. Les feuillets \u00e0 l'\u00e9chelle 1/1 000 000 sont identifi\u00e9es par une combinaison de trois chiffres (ex.: 098). Les feuillets \u00e0 l'\u00e9chelle 1/250 000 sont identifi\u00e9es par une combinaison de chiffres et de lettres allant de A \u00e0 P (ex.: 098C). Les parties plus petites (num\u00e9rot\u00e9es de 1 \u00e0 16) font chacune l'objet d'un feuillet \u00e0 l'\u00e9chelle 1/50 000 (ex.: 098C03).",
+            "en": "Topographic maps produced by Natural Resources Canada conform to the National Topographic System (NTS) of Canada. Indexes are available in three standard scales: 1:1,000,000, 1:250,000 and 1:50,000. The area covered by a given mapsheet is determined by its latitude and longitude. 1:1,000,000 mapsheets are identified by a combination of three numbers (e.g. 098). 1:250,000 mapsheets are identified by a combination of numbers, and letters ranging from A through P (e.g. 098C). Sixteen smaller segments (1 to 16) form blocks used for 1:50,000 mapping (e.g. 098C03)."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/nts_grid_en?service=WMS&version=1.3.0&request=GetCapabilities&layers=nts_index_layers&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - Syst\u00e8me national de r\u00e9f\u00e9rence cartographique du Canada",
+                    "en": "English Web Service; NRCan - Canadian National Topographic System"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/nts_grid_fr?service=WMS&version=1.3.0&request=GetCapabilities&layers=nts_index_layers&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Syst\u00e8me national de r\u00e9f\u00e9rence cartographique du Canada",
+                    "en": "French Web Service; NRCan - Canadian National Topographic System"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://ftp2.cits.rncan.gc.ca/pub/index/nts_snrc.zip",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers SHAPE pr\u00e9-emball\u00e9s",
+                    "en": "Pre-packaged SHAPE files"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "http://ftp2.cits.rncan.gc.ca/pub/index/nts_snrc.kmz",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers KML pr\u00e9-emball\u00e9s",
+                    "en": "Pre-packaged KML files"
+                },
+                "language": "eng; CAN",
+                "format": "KML / KMZ"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
+        }
+    },
+    {
+        "association_type": "",
+        "characterSet": "2015-04-15",
+        "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
+        "position_name": {
+            "fr": "",
+            "en": ""
+        },
+        "individual_name": "",
+        "frequency": "unknown",
+        "keywords": {
+            "fr": [
+                "Canada",
+                "Sciences de la Terre",
+                "G\u00e9oBase",
+                "Limites municipales",
+                "Sciences de la terre",
+                "Cartographie",
+                "G\u00e9ographie",
+                "Donn\u00e9es g\u00e9ographiques",
+                "Syst\u00e8me d'information g\u00e9ographique",
+                "G\u00e9omatique",
+                "Municipalit\u00e9"
+            ],
+            "en": [
+                "Canada",
+                "Earth Sciences",
+                "GeoBase",
+                "Municipal Boundaries",
+                "Earth sciences",
+                "Cartography",
+                "Geography",
+                "Geographic data",
+                "Geographic information systems",
+                "Geomatics",
+                "Municipalities"
+            ]
+        },
+        "contactInfo": {
+            "fr": {
+                "electronicMailAddress": "geoginfo@RNCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Qu\u00e9bec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            },
+            "en": {
+                "electronicMailAddress": "geoginfo@NRCan.gc.ca",
+                "city": "Sherbrooke",
+                "country": "Canada",
+                "administrativeArea": "Quebec",
+                "deliveryPoint": "",
+                "postalCode": ""
+            }
+        },
+        "digital_object_identifier": "",
+        "spatial_representation_type": "vector",
+        "title": {
+            "fr": "RNCan - Limites municipales du Canada",
+            "en": "NRCan \u2013 Canadian Municipal Boundaries"
+        },
+        "distributor": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,geoginfo@RNCan.gc.ca,distributeur",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,geoginfo@NRCan.gc.ca,distributor"
+        },
+        "id": "306e5004-534b-4110-9feb-58e3a5c3fd97",
+        "parent_id": "",
+        "spatial": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -139.5,
+                        41.7
+                    ],
+                    [
+                        -52.6,
+                        41.7
+                    ],
+                    [
+                        -52.6,
+                        76.5
+                    ],
+                    [
+                        -139.5,
+                        76.5
+                    ],
+                    [
+                        -139.5,
+                        41.7
+                    ]
+                ]
+            ]
+        },
+        "time_period_coverage_start": "1497-01-01",
+        "type": "maps",
+        "responsible_organization": {
+            "fr": "Ressources naturelles Canada",
+            "en": "Natural Resources Canada"
+        },
+        "status": "completed",
+        "topic_category": [
+            "boundaries"
+        ],
+        "aggregate_identifier": "",
+        "responsible_role": "pointOfContact",
+        "date_published": "2015-01-01",
+        "license_id": "ca-ogl-lgo",
+        "time_period_coverage_end": "9999-09-09",
+        "hierarchy_level": "dataset",
+        "name": "306e5004",
+        "spatialRepresentationType": "vector",
+        "url": "csw.open.canada.ca/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=306e5004-534b-4110-9feb-58e3a5c3fd97",
+        "notes": {
+            "fr": "Le produit des Limites municipales est constitu\u00e9 des zones administratives des dix provinces et trois territoires du Canada. Elles peuvent \u00eatre caract\u00e9ris\u00e9es comme ayant : (i) des \u00e9lus locaux, (ii) des pouvoirs d'imposition fonci\u00e8re et (iii) un large mandat. Elles sont repr\u00e9sent\u00e9es par une g\u00e9om\u00e9trie polygonale. En Colombie-Britannique, en Ontario et au Qu\u00e9bec, les entit\u00e9s municipales sont structur\u00e9es hi\u00e9rarchiquement, bien que la nature des relations hi\u00e9rarchiques soit diff\u00e9rente pour chacune des trois provinces. Le niveau le plus bas et le plus d\u00e9taill\u00e9 de la hi\u00e9rarchie comprend les Municipalit\u00e9s; ce niveau existe dans les 10 provinces et les 3 territoires. La Colombie-Britannique, l'Ontario et le Qu\u00e9bec contiennent \u00e9galement un niveau plus g\u00e9n\u00e9ral, trait\u00e9 comme Municipalit\u00e9s sup\u00e9rieures. Le Qu\u00e9bec poss\u00e8de un niveau encore plus \u00e9lev\u00e9 qui comprend les Zones r\u00e9gionales municipales. Les limites du Qu\u00e9bec sont d\u00e9finies par le \u00ab Trac\u00e9 de 1927 du Conseil priv\u00e9 \u00bb. Les trois niveaux hi\u00e9rarchiques, du plus d\u00e9taill\u00e9 au moins d\u00e9taill\u00e9, correspondent respectivement \u00e0 l'ordre GDF 8, l'ordre GDF 7 et l'ordre GDF 6 de la Sp\u00e9cification ISO 14825:2004 sur les Fichiers de donn\u00e9es g\u00e9ographiques (GDF). Les noms en langues autochtones qui n'utilisent pas l'alphabet latin peuvent \u00eatre adapt\u00e9s en utilisant le codage UTF-8 (Unicode).",
+            "en": "The Municipal Boundaries product consists of administrative areas within Canada's ten provinces and three territories. They can be characterized as having: (i) elected local officials, (ii) powers of land taxation, and (iii) a broad mandate. They are represented with polygonal geometry. In British Columbia, Ontario and Quebec the municipal features are structured hierarchically, although the nature of the hierarchical relationships differs in each of the three cases. The lowest, most detailed, level of the hierarchy consists of Municipalities; it exists in all 10 provinces and 3 territories. British Columbia, Ontario, and Quebec contain a more general level, referred to as Upper Municipalities. Quebec has a still higher level consisting of Municipal Regional Areas. The boundaries for Quebec are defined by the \"Trac\u00e9 de 1927 du Conseil priv\u00e9\". The three levels, from more detailed to less detailed, correspond to GDF Order-8, GDF Order-7, and GDF Order-6 respectively in ISO 14825:2004, the Geography Data Files specification. Names in aboriginal languages that do not make use of the Latin alphabet can be accommodated by using the UTF-8 (Unicode) encoding."
+        },
+        "resources": [
+            {
+                "url": "http://205.195.196.111/wms/muni_boundaries_en?service=WMS&request=GetCapabilities&version=1.3.0&layers=muni_boundaries&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en anglais; RNCan - Limites municipales du Canada",
+                    "en": "English Web Service; NRCan - Canadian Municipal Boundaries"
+                },
+                "language": "eng; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://205.195.196.111/wms/muni_boundaries_fr?service=WMS&request=GetCapabilities&version=1.3.0&layers=limites_muni&legend_format=image/png&feature_info_type=text/html",
+                "contentType": "Web Service",
+                "name": {
+                    "fr": "Service Web en fran\u00e7ais; RNCan - Limites municipales du Canada",
+                    "en": "French Web Service; NRCan - Canadian Municipal Boundaries"
+                },
+                "language": "fra; CAN",
+                "format": "WMS"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/eng/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en anglais \u2013 format SHP, FGDB ou GML (GeoGratis-Outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in English \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "eng; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "http://geogratis.gc.ca/site/fra/extraction",
+                "contentType": "Application",
+                "name": {
+                    "fr": "Fichiers personnalis\u00e9s en fran\u00e7ais \u2013 format SHP, FGDB ou GML (GeoGratis-Outil d'extraction de donn\u00e9es)",
+                    "en": "Personalised files in French \u2013 SHP, FGDB or GML format (GeoGratis-Data Extraction tool)"
+                },
+                "language": "fra; CAN",
+                "format": "Application"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/fgdb/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers FGDB pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged FGDB files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "FGDB / GDB"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/shp/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers Shape pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged Shape files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "SHP"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/gml/",
+                "contentType": "Dataset",
+                "name": {
+                    "fr": "Fichiers GML pr\u00e9-emball\u00e9s (CanVec+)",
+                    "en": "Pre-packaged GML files (CanVec+)"
+                },
+                "language": "eng; CAN",
+                "format": "GML"
+            },
+            {
+                "url": "ftp://ftp2.cits.rncan.gc.ca/pub/canvec+/doc/",
+                "contentType": "Supporting Document",
+                "name": {
+                    "fr": "Documentation relative au produit CanVec+",
+                    "en": "Documentation related to CanVec+ product"
+                },
+                "language": "eng; CAN",
+                "format": "PDF"
+            }
+        ],
+        "metadata_contact": {
+            "fr": "Gouvernement du Canada; Ressources naturelles Canada; Secteur des sciences de la Terre; Centre canadien de cartographie et d'observation de la Terre,voix; 1 (819) 5645600,voix; 1 (800) 6612638,geoginfo@RNCan.gc.ca",
+            "en": "Government of Canada; Natural Resources Canada; Earth Sciences Sector; Canada Centre for Mapping and Earth Observation,voice; 1 (819) 5645600,voice; 1 (800) 6612638,geoginfo@NRCan.gc.ca"
         }
     }
 ]
