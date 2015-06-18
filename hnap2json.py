@@ -65,6 +65,12 @@ def reportError(errorText):
 	global error_output
 	global OGDMES2ID
 	error_output.append(errorText)
+def sanityMandatory(pre,values):
+	values = list(set(values))
+	if values == None or len(values) < 1:
+		reportError(pre+',madatory field missing or not found in controlled list,""')
+		return False
+	return True
 def sanitySingle(pre,values):
 	values = list(set(values))
 	if len(values) > 1:
@@ -76,15 +82,10 @@ def sanityFirst(values):
 		return ''
 	else:
 		return values[0]
-def sanityMandatory(pre,values):
-	if values == None or len(values) < 1:
-		reportError(pre+',madatory field missing or not found in controlled list,""')
-		return False
-	return True
 def sanityDate(pre,date_text):
 	value = ''
 	try:
-		value = datetime.datetime.strptime(date_text, '%Y-%m-%d').strftime('%Y-%m-%d')
+		value = datetime.datetime.strptime(date_text, '%Y-%m-%d').isoformat().split('T')[0]
 	except ValueError:
 		reportError(pre+',date is not valid,"'+date_text+'"')
 		return False
@@ -92,6 +93,11 @@ def sanityDate(pre,date_text):
 		reportError(pre+',date is not valid,"'+date_text+'"')
 		return False
 	return True
+def maskDate(date):
+	#default_date = 
+	if len(date) >= 10:
+		return date
+	return date+('xxxx-01-01'[-10+len(date):])
 
 def main():
 	# Read the file, should be a streamed input in the future
