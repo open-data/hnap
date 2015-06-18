@@ -573,15 +573,6 @@ def main():
 
 		##### OGDMES-23 descriptiveKeywords
 		##################################################
-#
-#
-#  ERROR: ITTERATE OVER EACH 
-#  gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/
-#
-#  THEN:
-#  gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/
-#
-#
 		OGDMES_property = 'descriptiveKeywords'
 		json_record['keywords'] = {}
 		primary_vals = []
@@ -1027,8 +1018,6 @@ def main():
 	output.close()
 
 	return 1
-
-OGDMES2JSON = {}
 
 OGDMES2ID                       = {
 	'fileIdentifier'                :'01',
