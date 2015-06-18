@@ -298,22 +298,12 @@ def main():
 		##### OGDMES-11 locale
 		##################################################
 		OGDMES_property = 'locale'
-		tmp = fetchXMLValues(record,"gmd:MD_Metadata/gmd:locale/gmd:PT_Locale/gmd:languageCode/gmd:LanguageCode")
-		#Ian Ward @ CKAN:disable:sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
-		#Ian Ward @ CKAN:disable:json_record[OGDMES_property] = {}
-
-		primary_vals = []
-		second_vals	= []
+		tmp = fetchXMLAttribute(record,"gmd:locale/gmd:PT_Locale/gmd:languageCode/gmd:LanguageCode","codeListValue")
 
 		if tmp != None and len(tmp) > 0:
-			for locale in tmp:
-				(primary,secondary) = locale.strip().split(';')
-				primary_vals.append(primary.strip())
-				second_vals.append(secondary.strip())
-				#Ian Ward @ CKAN:disable:json_record[OGDMES_property][CKAN_primary_lang] = ','.join(primary_vals)
-				#Ian Ward @ CKAN:disable:json_record[OGDMES_property][CKAN_secondary_lang] = ','.join(second_vals)
-			debug_output['11-OGDMES locale'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
-			debug_output['11-OGDMES locale'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+			#Ian Ward @ CKAN:disable:json_record[OGDMES_property][CKAN_primary_lang] = ','.join(primary_vals)
+			#Ian Ward @ CKAN:disable:json_record[OGDMES_property][CKAN_secondary_lang] = ','.join(second_vals)
+			debug_output['11-OGDMES locale'] = tmp[0]
 
 		##### OGDMES-12 title
 		##################################################
@@ -552,21 +542,17 @@ def main():
 		##### OGDMES-21 role
 		##################################################
 		OGDMES_property = 'role'
-		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
+		tmp = fetchXMLAttribute(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode","codeListValue")
 		json_record['responsible_role'] = {}
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			(primary,secondary) = sanityFirst(tmp).strip().split(';')
-			# Can you find the english CL entry?
-			termsValue = fetchCLValue(primary,napCI_RoleCode)
-			if not termsValue:
-				# Can you find the french CL entry?
-				termsValue = fetchCLValue(secondary,napCI_RoleCode)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				# Can you find the CL entry?
+				termsValue = fetchCLValue(tmp[0],napCI_RoleCode)
 				if not termsValue:
 					termsValue = []
-			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
-				json_record['responsible_role'] = termsValue[0]
-				debug_output['21-OGDMES responsible_role'] = json_record['responsible_role']
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
+					json_record['responsible_role'] = termsValue[0]
+					debug_output['21-OGDMES responsible_role'] = json_record['responsible_role']
 
 		##### OGDMES-22 abstract
 		##################################################
@@ -628,50 +614,34 @@ def main():
 		##### OGDMES-24 status
 		##################################################
 		OGDMES_property = 'status'
-		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status/gmd:MD_ProgressCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
+		tmp = fetchXMLAttribute(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status/gmd:MD_ProgressCode","codeListValue")
 		json_record[OGDMES_property] = {}
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			(primary,secondary) = sanityFirst(tmp).strip().split(';')
-			# Can you find the english CL entry?
-			termsValue = fetchCLValue(primary,napMD_ProgressCode)
-			if not termsValue:
-				# Can you find the french CL entry?
-				termsValue = fetchCLValue(secondary,napMD_ProgressCode)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				# Can you find the CL entry?
+				termsValue = fetchCLValue(tmp[0],napMD_ProgressCode)
 				if not termsValue:
 					termsValue = []
-			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
-				json_record[OGDMES_property] = termsValue[0]
-				debug_output['24-OGDMES status'] = json_record[OGDMES_property]
-				#json_record[OGDMES_property][CKAN_primary_lang] = termsValue[0]
-				#json_record[OGDMES_property][CKAN_secondary_lang] = termsValue[1]
-				#debug_output['24-OGDMES status'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
-				#debug_output['24-OGDMES status'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
+					json_record[OGDMES_property] = termsValue[0]
+					debug_output['24-OGDMES status'] = json_record[OGDMES_property]
 
 		##### OGDMES-25 associationType
 		##################################################
-		# No test data but this XPATH bas been confirmed by Marie-Eve Martin @ NRCan
 		OGDMES_property = 'associationType'
-		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:associationType/gmd:DS_AssociationTypeCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 
+		tmp = fetchXMLAttribute(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:associationType/gmd:DS_AssociationTypeCode","codeListValue")
 		associationTypes_array = []
-
+		# Not mandatory, process if you have it
 		if tmp != None and len(tmp) > 0:
+			# You have to itterate to find a valid one, not neccesaraly the first
 			for associationType in tmp:
-				(primary,secondary) = associationType.strip().split(';')
-
-				# Can you find the english CL entry?
-				termsValue = fetchCLValue(primary,napDS_AssociationTypeCode)
+				# Can you find the CL entry?
+				termsValue = fetchCLValue(associationType,napDS_AssociationTypeCode)
 				if not termsValue:
-					# Can you find the french CL entry?
-					termsValue = fetchCLValue(secondary,napDS_AssociationTypeCode)
-					if not termsValue:
-						termsValue = []
-
+					termsValue = []
 				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
-					associationTypes_array.append(termsValue[0])
-
+					associationTypes_array.append(termsValue[0])					
 		json_record['association_type'] = ','.join(associationTypes_array)
 		debug_output['25-OGDMES associationType'] = json_record['association_type']
 
@@ -696,23 +666,21 @@ def main():
 		##### OGDMES-27 spatialRepresentationType
 		##################################################
 		OGDMES_property = 'spatialRepresentationType'
-		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
-		json_record['spatial_representation_type'] = {}
 
+		tmp = fetchXMLAttribute(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode","codeListValue")
+		json_record['spatial_representation_type'] = {}
 		spatialRepresentationType_array = []
 
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+			# You have to itterate to find a valid one, not neccesaraly the first
 			for spatialRepresentationType in tmp:
-				(primary,secondary) = spatialRepresentationType.strip().split(';')
-
-				# Can you find the english CL entry?
-				termsValue = fetchCLValue(primary,napMD_SpatialRepresentationTypeCode)
+				# Can you find the CL entry?
+				termsValue = fetchCLValue(spatialRepresentationType,napMD_SpatialRepresentationTypeCode)
 				if not termsValue:
-					# Can you find the french CL entry?
-					termsValue = fetchCLValue(secondary,napMD_SpatialRepresentationTypeCode)
-					if not termsValue:
-						termsValue = []
+					termsValue = []
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
+					json_record[OGDMES_property] = termsValue[0]
+					debug_output['27-OGDMES spatialRepresentationType'] = json_record[OGDMES_property]
 
 				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
 					spatialRepresentationType_array.append(termsValue[0])
@@ -801,46 +769,81 @@ def main():
 		OGDMES_property = 'temporalElement'
 		temporalElement_array = []
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp)
-		if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property+'Start',sanityFirst(tmp)):
-			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
-				json_record['time_period_coverage_start'] = sanityFirst(tmp)
-				temporalElement_array.append(sanityFirst(tmp))
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
+				if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property+'Start',maskDate(sanityFirst(tmp))):
+						json_record['time_period_coverage_start'] = maskDate(sanityFirst(tmp))
+						temporalElement_array.append(json_record['time_period_coverage_start'])
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'End',tmp)
-		if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property+'End',sanityFirst(tmp)):
-			json_record['time_period_coverage_end'] = sanityFirst(tmp)
-			temporalElement_array.append(sanityFirst(tmp))
+		# ADAPTATION #2
+		# CKAN (or Solr) requires an end date where one doesn't exist.  An open record should run
+		# without an end date.  Since this is not the case a '9999-99-99' is used in lieu.
+		# ADAPTATION #3
+		# Temporal elements are ISO 8601 date objects but this field may be left blank (invalid).
+		# The intent is to use a blank field as a maker for an "open" record were omission of this
+		# field would be standard practice.  No gml:endPosition = no end.
+		# Since changing the source seems to be impossible we adapt by replacing a blank entry with
+		# the equally ugly '9999-99-99' forced end in CKAN.
+		check_for_blank = sanityFirst(tmp)
+		if check_for_blank == '':
+			check_for_blank = '9999-09-09'
+		if check_for_blank == '9999-09-09' or sanityDate(OGDMES_fileIdentifier+','+OGDMES_property+'End',maskDate(check_for_blank)):
+			json_record['time_period_coverage_end'] = maskDate(check_for_blank)
+			temporalElement_array.append(json_record['time_period_coverage_end'])
+		## End ADAPTATION #2 & #3
 
 		debug_output['33-OGDMES temporalElement'] = ','.join(temporalElement_array)
 
 		##### OGDMES-34 maintenanceAndUpdateFrequency
 		##################################################
 		OGDMES_property = 'maintenanceAndUpdateFrequency'
-		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
+
+		tmp = fetchXMLAttribute(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode","codeListValue")
 		json_record['frequency'] = {}
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			(primary,secondary) = sanityFirst(tmp).strip().split(';')
-
-			# Can you find the english CL entry?
-			termsValue = fetchCLValue(primary,napMD_MaintenanceFrequencyCode)
-			if not termsValue:
-				# Can you find the french CL entry?
-				termsValue = fetchCLValue(secondary,napMD_MaintenanceFrequencyCode)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				# Can you find the CL entry?
+				termsValue = fetchCLValue(tmp[0],napMD_MaintenanceFrequencyCode)
 				if not termsValue:
 					termsValue = []
-
-			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
-				json_record['frequency'] = termsValue[0].lower()
-				debug_output['34-OGDMES maintenanceAndUpdateFrequency'] = json_record['frequency']
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
+					json_record['frequency'] = termsValue[0]
+					debug_output['34-OGDMES maintenanceAndUpdateFrequency'] = json_record['frequency']
 
 		##### OGDMES-35 licence_id
 		##################################################
 		OGDMES_property = 'licence_id'
 		json_record['license_id'] = 'ca-ogl-lgo'
 		debug_output['35-OGDMES Licence'] = "Open Government Licence – Canada <linkto: http://open.canada.ca/en/open-government-licence-canada>"
+
+		data_constraints = fetchXMLArray(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints")
+		licence_count    = 0
+		for data_constraint in data_constraints:
+			accessConstraint = False
+			useConstraint    = False
+			tmp = fetchXMLAttribute(data_constraint,"gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode","codeListValue")
+			if len(tmp) and tmp[0] == 'RI_606': # RI_606 is a licence
+				accessConstraint = True
+			tmp = fetchXMLAttribute(data_constraint,"gmd:MD_LegalConstraints/gmd:useConstraints/gmd:MD_RestrictionCode","codeListValue")
+			if len(tmp) and tmp[0] == 'RI_606': # RI_606 is a licence
+				useConstraint = True
+
+			if accessConstraint == True or useConstraint == True:
+				licence_count += 1
+
+				tmp = fetchXMLValues(data_constraint,"gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString")
+				if sanityMandatory(OGDMES_property+','+OGDMES_property,tmp):	
+					if sanityFirst(tmp).strip() != 'Open Government Licence - Canada (http://open.canada.ca/en/open-government-licence-canada)':
+						reportError(OGDMES_fileIdentifier+','+'license,Invalid License,"'+str(tmp)+'"')
+
+				tmp = fetchXMLValues(data_constraint,"gmd:MD_LegalConstraints/gmd:useLimitation/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+				if sanityMandatory(OGDMES_property+','+OGDMES_property,tmp):	
+					if sanityFirst(tmp).strip() != 'Licence du gouvernement ouvert - Canada (http://ouvert.canada.ca/fr/licence-du-gouvernement-ouvert-canada)':
+						reportError(OGDMES_fileIdentifier+','+'license,Invalid License,"'+str(tmp)+'"')
+		if licence_count > 1:
+			reportError(OGDMES_fileIdentifier+','+'license,More than one licence,""')
 
 		##### OGDMES-36 referenceSystemInformation
 		##################################################
