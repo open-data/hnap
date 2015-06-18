@@ -702,7 +702,7 @@ def main():
 			for topicCategory in tmp:
 				termsValue = fetchCLValue(topicCategory.strip(),napMD_KeywordTypeCode)
 				if termsValue:
-					topicCategory_array.append(topicCategory)
+					topicCategory_array.append(termsValue[0])
 
 			# After we check aganst the CL we need to make sure thre still is data before you accept it
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,topicCategory_array):
