@@ -1,7 +1,6 @@
 [
     {
         "association_type": "",
-        "characterSet": "2015-04-14",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -206,7 +205,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-16",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -341,7 +339,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-14",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -548,7 +545,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-05-13",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -735,7 +731,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-14",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -938,7 +933,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-15",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -1141,7 +1135,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-14",
         "reference_system": "EPSG:32619,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -1308,7 +1301,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-14",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -1515,7 +1507,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-05-07",
         "reference_system": "EPSG::4269,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
@@ -1688,7 +1679,6 @@
     },
     {
         "association_type": "",
-        "characterSet": "2015-04-15",
         "reference_system": "EPSG:4617,http://www.epsg-registry.org,8.6.2",
         "position_name": {
             "fr": "",
