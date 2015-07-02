@@ -279,7 +279,7 @@ def main():
 				date_str = date_str.split('T')[0]
 
 			if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property,date_str):
-				json_record['characterSet'] = date_str
+				#json_record['metadataRecordDateStamp'] = date_str
 				debug_output['08-OGDMES metadataRecordDateStamp'] = date_str
 
 		##### OGDMES-09 metadataStandardName
