@@ -768,11 +768,11 @@ def main():
 		OGDMES_property = 'temporalElement'
 		temporalElement_array = []
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
-			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
-				if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property+'Start',maskDate(sanityFirst(tmp))):
-						json_record['time_period_coverage_start'] = maskDate(sanityFirst(tmp))
-						temporalElement_array.append(json_record['time_period_coverage_start'])
+		#if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
+		if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'Start',tmp):
+			if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property+'Start',maskDate(sanityFirst(tmp))):
+					json_record['time_period_coverage_start'] = maskDate(sanityFirst(tmp))
+					temporalElement_array.append(json_record['time_period_coverage_start'])
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition")
 		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'End',tmp)
