@@ -880,29 +880,38 @@ def main():
 		OGDMES_subproperty = 'organizationName'
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
-			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
-				primary_vals.append(sanityFirst(tmp))
+			for value in tmp:
+				primary_vals.append(value)
+			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
+			#	primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
-			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
-				second_vals.append(sanityFirst(tmp))
+			for value in tmp:
+				second_vals.append(value)
+			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
+			#	second_vals.append(sanityFirst(tmp))
 
 		OGDMES_subproperty = 'electronicMailAddress'
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
-			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
-				primary_vals.append(sanityFirst(tmp))
+			for value in tmp:
+				primary_vals.append(value)
+			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
+			#	primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
-			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
-				second_vals.append(sanityFirst(tmp))
+			for value in tmp:
+				second_vals.append(value)
+			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
+			#	second_vals.append(sanityFirst(tmp))
 
 		OGDMES_subproperty = 'role'
 		tmp = fetchXMLAttribute(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode","codeListValue")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,tmp):
-			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,tmp):
+			for value in tmp:
+			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,tmp):
 				# Can you find the CL entry?
-				termsValue = fetchCLValue(tmp[0],napCI_RoleCode)
+				termsValue = fetchCLValue(value,napCI_RoleCode)
 				if not termsValue:
 					termsValue = []
 				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,termsValue):
