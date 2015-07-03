@@ -33,8 +33,10 @@ import codecs
 # XML Parsing
 from lxml import etree
 
+# Fetch an array which may be subsections
 def fetchXMLArray(objectToXpath,xpath):
 	return objectToXpath.xpath(xpath, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2','csw':'http://www.opengis.net/cat/csw/2.0.2'})
+# Extract values from your current position
 def fetchXMLValues(objectToXpath,xpath):
 	values = []
 	r = fetchXMLArray(objectToXpath,xpath)
@@ -45,6 +47,7 @@ def fetchXMLValues(objectToXpath,xpath):
 			else:
 				values.append(namePart.text.strip())
 	return values
+# Fetch an attribute instead of a an element
 def fetchXMLAttribute(objectToXpath,xpath,attribute):
 	# Easy to miss this, clean and combine
 	clean_xpath     = xpath.rstrip('/')
@@ -54,6 +57,7 @@ def fetchXMLAttribute(objectToXpath,xpath,attribute):
 	# e.g.:
 	# html/body/@background-color
 	return objectToXpath.xpath(xpath+'/@'+attribute, namespaces={'gmd':'http://www.isotc211.org/2005/gmd', 'gco':'http://www.isotc211.org/2005/gco','gml':'http://www.opengis.net/gml/3.2','csw':'http://www.opengis.net/cat/csw/2.0.2'})
+# Fetch the value of a controled list ( at the bottom )
 def fetchCLValue(SRCH_key,CL_array):
 	p = re.compile(' ')
 	SRCH_key = SRCH_key.lower()
@@ -65,27 +69,32 @@ def fetchCLValue(SRCH_key,CL_array):
 		if SRCH_key == CL_key:
 			return value
 	return None
+# Fire off an error to cmd line
 def reportError(errorText):
 	global error_output
 	global OGDMES2ID
 	error_output.append(errorText)
+# Sanity check: make sure the value exists
 def sanityMandatory(pre,values):
 	values = list(set(values))
 	if values == None or len(values) < 1:
 		reportError(pre+',madatory field missing or not found in controlled list,""')
 		return False
 	return True
+# Sanity check: make sure there is only one value
 def sanitySingle(pre,values):
 	values = list(set(values))
 	if len(values) > 1:
 		reportError(pre+',multiple of a single value,"'+','.join(values)+'"')
 		return False
 	return True
+# Sanity value: extract the first value or blank string
 def sanityFirst(values):
 	if len(values) < 1:
 		return ''
 	else:
 		return values[0]
+# Sanity check: validate the date
 def sanityDate(pre,date_text):
 	value = ''
 	try:
@@ -97,6 +106,7 @@ def sanityDate(pre,date_text):
 		reportError(pre+',date is not valid,"'+date_text+'"')
 		return False
 	return True
+# Mask dates to make sure they resolve to the day
 def maskDate(date):
 	#default_date = 
 	if len(date) >= 10:
@@ -188,10 +198,10 @@ def main():
 		##################################################
 		OGDMES_property = 'characterSet'
 		tmp = fetchXMLValues(record,"gmd:characterSet/gmd:MD_CharacterSetCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-		#Ian Ward @ CKAN:disable:json_record[OGDMES_property] = sanityFirst(tmp).split(';')[0]
-			debug_output['04-OGDMES characterSet'] = sanityFirst(tmp).split(';')[0]
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				#Ian Ward @ CKAN:disable:json_record[OGDMES_property] = sanityFirst(tmp).split(';')[0]
+				debug_output['04-OGDMES characterSet'] = sanityFirst(tmp).split(';')[0]
 
 		##### OGDMES-05 parentIdentifier
 		##################################################
@@ -205,11 +215,11 @@ def main():
 		##################################################
 		OGDMES_property = 'hierarchyLevel'
 		tmp = fetchXMLValues(record,"gmd:hierarchyLevel/gmd:MD_ScopeCode")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			(primary,secondary) = sanityFirst(tmp).strip().split(';')			
-			json_record['hierarchy_level'] = primary.strip()
-			debug_output['06-OGDMES hierarchyLevel'] = json_record['hierarchy_level']
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				(primary,secondary) = sanityFirst(tmp).strip().split(';')			
+				json_record['hierarchy_level'] = primary.strip()
+				debug_output['06-OGDMES hierarchyLevel'] = json_record['hierarchy_level']
 
 		##### OGDMES-07 metadataContact
 		##################################################
@@ -219,13 +229,13 @@ def main():
 
 		# organizationName
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-OrganizationName-'+CKAN_primary_lang,tmp):
-			primary_vals.append(sanityFirst(tmp))
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp):
+				primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-OrganizationName-'+CKAN_secondary_lang,tmp):
-			second_vals.append(sanityFirst(tmp))
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp):
+				second_vals.append(sanityFirst(tmp))
 
 		# voice
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
@@ -246,13 +256,13 @@ def main():
 
 		# electronicMailAddress
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-electronicMailAddress-'+CKAN_primary_lang,tmp):
-			primary_vals.append(sanityFirst(tmp))
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp):
+				primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-electronicMailAddress-'+CKAN_secondary_lang,tmp):
-			second_vals.append(sanityFirst(tmp))
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp):
+				second_vals.append(sanityFirst(tmp))
 
 		json_record['metadata_contact'] = {}
 		json_record['metadata_contact'][CKAN_primary_lang] = ','.join(primary_vals)
@@ -270,17 +280,16 @@ def main():
 		if len(values) < 1:
 			tmp = fetchXMLValues(record,"gmd:dateStamp/gco:DateTime")
 
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				# Might be a iso datetime
+				date_str = sanityFirst(tmp)
+				if date_str.count('T') == 1:
+					date_str = date_str.split('T')[0]
 
-			# Might be a iso datetime
-			date_str = sanityFirst(tmp)
-			if date_str.count('T') == 1:
-				date_str = date_str.split('T')[0]
-
-			if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property,date_str):
-				#json_record['metadataRecordDateStamp'] = date_str
-				debug_output['08-OGDMES metadataRecordDateStamp'] = date_str
+				if sanityDate(OGDMES_fileIdentifier+','+OGDMES_property,date_str):
+					json_record['date_source_metadata_created'] = date_str
+					debug_output['08-OGDMES metadataRecordDateStamp'] = date_str
 
 		##### OGDMES-09 metadataStandardName
 		##################################################
@@ -311,16 +320,16 @@ def main():
 		json_record[OGDMES_property] = {}
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record[OGDMES_property][CKAN_primary_lang] = sanityFirst(tmp)
-			debug_output['12-OGDMES title'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp):
+				json_record[OGDMES_property][CKAN_primary_lang] = sanityFirst(tmp)
+				debug_output['12-OGDMES title'+OGDMES_primary_lang] = json_record[OGDMES_property][CKAN_primary_lang]
 		
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record[OGDMES_property][CKAN_secondary_lang] = sanityFirst(tmp)
-			debug_output['12-OGDMES title'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp):
+				json_record[OGDMES_property][CKAN_secondary_lang] = sanityFirst(tmp)
+				debug_output['12-OGDMES title'+OGDMES_secondary_lang] = json_record[OGDMES_property][CKAN_secondary_lang]
 
 		##### OGDMES-13 dateContributed
 		##################################################
@@ -391,45 +400,45 @@ def main():
 		# A bit unique, some manual work to strip the GC object
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp)
-		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):		
-			values = tmp[0].strip().split(';')
-			if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
-				reportError(OGDMES_fileIdentifier+','+organisationName+',"Bad organizationName, no Government of Canada",""')
-			del values[0]
-			# At ths point you have ditched GOC and your checking for good dept names
-			for GOC_Div in values:
-				# Are they in the CL?
-				termsValue = fetchCLValue(GOC_Div,GC_Registry_of_Applied_Terms)
-				if termsValue:
-					if CKAN_primary_lang == 'en':
-						primary_vals.append(termsValue[0]) # Use CL value, cleaner and more consistent
-					else:
-						primary_vals.append(termsValue[2]) # Use CL value, cleaner and more consistent
-			
-			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,primary_vals):
-				json_record['responsible_organization'][CKAN_primary_lang] = ','.join(primary_vals)
-				debug_output['18-OGDMES organisationName'+OGDMES_primary_lang] = json_record['responsible_organization'][CKAN_primary_lang]
+		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):
+				values = tmp[0].strip().split(';')
+				if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
+					reportError(OGDMES_fileIdentifier+','+organisationName+',"Bad organizationName, no Government of Canada",""')
+				del values[0]
+				# At ths point you have ditched GOC and your checking for good dept names
+				for GOC_Div in values:
+					# Are they in the CL?
+					termsValue = fetchCLValue(GOC_Div,GC_Registry_of_Applied_Terms)
+					if termsValue:
+						if CKAN_primary_lang == 'en':
+							primary_vals.append(termsValue[0]) # Use CL value, cleaner and more consistent
+						else:
+							primary_vals.append(termsValue[2]) # Use CL value, cleaner and more consistent
+				
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,primary_vals):
+					json_record['responsible_organization'][CKAN_primary_lang] = ','.join(primary_vals)
+					debug_output['18-OGDMES organisationName'+OGDMES_primary_lang] = json_record['responsible_organization'][CKAN_primary_lang]
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
-			values = tmp[0].strip().split(';')
-			if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
-				reportError(organisationName+',"Bad organizationName, no Government of Canada",""')
-			del values[0]
-			for GOC_Div in values:
-				#print "FRGOC_DIV:"+GOC_Div
-				termsValue = fetchCLValue(GOC_Div,GC_Registry_of_Applied_Terms)
-				if termsValue:
-					if CKAN_primary_lang == 'en':
-						second_vals.append(termsValue[2])
-					else:
-						second_vals.append(termsValue[0])
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
+				values = tmp[0].strip().split(';')
+				if values[0] != 'Government of Canada' and values[0] != 'Gouvernement du Canada':
+					reportError(organisationName+',"Bad organizationName, no Government of Canada",""')
+				del values[0]
+				for GOC_Div in values:
+					#print "FRGOC_DIV:"+GOC_Div
+					termsValue = fetchCLValue(GOC_Div,GC_Registry_of_Applied_Terms)
+					if termsValue:
+						if CKAN_primary_lang == 'en':
+							second_vals.append(termsValue[2])
+						else:
+							second_vals.append(termsValue[0])
 
-			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,second_vals):
-				json_record['responsible_organization'][CKAN_secondary_lang] = ','.join(second_vals)
-				debug_output['18-OGDMES organisationName'+OGDMES_secondary_lang] = json_record['responsible_organization'][CKAN_secondary_lang]
+				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,second_vals):
+					json_record['responsible_organization'][CKAN_secondary_lang] = ','.join(second_vals)
+					debug_output['18-OGDMES organisationName'+OGDMES_secondary_lang] = json_record['responsible_organization'][CKAN_secondary_lang]
 
 		##### OGDMES-19 positionName
 		##################################################
@@ -560,16 +569,16 @@ def main():
 		json_record['notes'] = {}
 
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record['notes'][CKAN_primary_lang] = sanityFirst(tmp)
-			debug_output['22-OGDMES abstract'+OGDMES_primary_lang] = json_record['notes'][CKAN_primary_lang]
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_primary_lang,tmp):
+				json_record['notes'][CKAN_primary_lang] = sanityFirst(tmp)
+				debug_output['22-OGDMES abstract'+OGDMES_primary_lang] = json_record['notes'][CKAN_primary_lang]
 		
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record['notes'][CKAN_secondary_lang] = sanityFirst(tmp)
-			debug_output['22-OGDMES abstract'+OGDMES_secondary_lang] = json_record['notes'][CKAN_secondary_lang]
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+CKAN_secondary_lang,tmp):
+				json_record['notes'][CKAN_secondary_lang] = sanityFirst(tmp)
+				debug_output['22-OGDMES abstract'+OGDMES_secondary_lang] = json_record['notes'][CKAN_secondary_lang]
 
 		##### OGDMES-23 descriptiveKeywords
 		##################################################
@@ -577,6 +586,7 @@ def main():
 		json_record['keywords'] = {}
 		primary_vals = []
 		second_vals	= []
+
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/gco:CharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):
 			for value in tmp:
@@ -672,13 +682,11 @@ def main():
 				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
 					json_record[OGDMES_property] = termsValue[0]
 					debug_output['27-OGDMES spatialRepresentationType'] = json_record[OGDMES_property]
-
 				if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,termsValue):
 					spatialRepresentationType_array.append(termsValue[0])
 
 		json_record['spatial_representation_type'] = ','.join(spatialRepresentationType_array)
 		debug_output['27-OGDMES spatialRepresentationType'] = json_record['spatial_representation_type']
-
 
 		##### OGDMES-28 topicCategory
 		##################################################
@@ -704,37 +712,37 @@ def main():
 		##################################################
 		OGDMES_property = 'westBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record[OGDMES_property] = sanityFirst(tmp)
-			debug_output['29-OGDMES westBoundingLongitude'] = sanityFirst(tmp)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				json_record[OGDMES_property] = sanityFirst(tmp)
+				debug_output['29-OGDMES westBoundingLongitude'] = sanityFirst(tmp)
 
 		##### OGDMES-30 eastBoundingLongitude
 		##################################################
 		OGDMES_property = 'eastBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:eastBoundLongitude/gco:Decimal")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record[OGDMES_property] = sanityFirst(tmp)
-			debug_output['30-OGDMES eastBoundingLongitude'] = sanityFirst(tmp)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				json_record[OGDMES_property] = sanityFirst(tmp)
+				debug_output['30-OGDMES eastBoundingLongitude'] = sanityFirst(tmp)
 
 		##### OGDMES-31 southBoundingLongitude
 		##################################################
 		OGDMES_property = 'southBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:southBoundLatitude/gco:Decimal")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record[OGDMES_property] = sanityFirst(tmp)
-			debug_output['31-OGDMES southBoundingLongitude'] = sanityFirst(tmp)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				json_record[OGDMES_property] = sanityFirst(tmp)
+				debug_output['31-OGDMES southBoundingLongitude'] = sanityFirst(tmp)
 
 		##### OGDMES-32 northBoundingLongitude
 		##################################################
 		OGDMES_property = 'northBoundingLongitude'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox/gmd:northBoundLatitude/gco:Decimal")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-			json_record[OGDMES_property] = sanityFirst(tmp)
-			debug_output['32-OGDMES northBoundingLongitude'] = sanityFirst(tmp)
+			if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+				json_record[OGDMES_property] = sanityFirst(tmp)
+				debug_output['32-OGDMES northBoundingLongitude'] = sanityFirst(tmp)
 
 		GeoJSON = {}
 		GeoJSON['type'] = "Polygon"
@@ -932,29 +940,29 @@ def main():
 
 			OGDMES_property = 'Resource['+str(resource_no)+']-ResourceName'
 			tmp = fetchXMLValues(resource,"gmd:name/gco:CharacterString")
-			sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_primary_lang,tmp):
-				json_record_resource['name'][CKAN_primary_lang] = sanityFirst(tmp)
-				debug_output['39-OGDMES Resource['+str(resource_no)+'] ResourceName'+OGDMES_primary_lang] = sanityFirst(tmp)
+				if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+					json_record_resource['name'][CKAN_primary_lang] = sanityFirst(tmp)
+					debug_output['39-OGDMES Resource['+str(resource_no)+'] ResourceName'+OGDMES_primary_lang] = sanityFirst(tmp)
 
 			tmp = fetchXMLValues(resource,"gmd:name/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
-			sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+OGDMES_secondary_lang,tmp):
-				json_record_resource['name'][CKAN_secondary_lang] = sanityFirst(tmp)
-				debug_output['39-OGDMES Resource['+str(resource_no)+'] ResourceName'+OGDMES_secondary_lang] = sanityFirst(tmp)
+				if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+					json_record_resource['name'][CKAN_secondary_lang] = sanityFirst(tmp)
+					debug_output['39-OGDMES Resource['+str(resource_no)+'] ResourceName'+OGDMES_secondary_lang] = sanityFirst(tmp)
 
 			OGDMES_property = 'Resource['+str(resource_no)+']-accessUrl'
 			tmp = fetchXMLValues(resource,"gmd:linkage/gmd:URL")
-			sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-				json_record_resource['url'] = sanityFirst(tmp)
-				debug_output['40-OGDMES Resource['+str(resource_no)+'] accessURL'] = sanityFirst(tmp)
+				if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+					json_record_resource['url'] = sanityFirst(tmp)
+					debug_output['40-OGDMES Resource['+str(resource_no)+'] accessURL'] = sanityFirst(tmp)
 
 			OGDMES_property = 'Resource['+str(resource_no)+']-description;'
 			tmp = fetchXMLValues(resource,"gmd:description/gco:CharacterString")
-			sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 			if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
-				description_text = sanityFirst(tmp).strip()
+				if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp):
+					description_text = sanityFirst(tmp).strip()
 				
 				# ADAPTATION #1
 				# The source METADATA (HNAP) does not seem to have the metadata required to describe
