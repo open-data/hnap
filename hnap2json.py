@@ -387,9 +387,16 @@ def main():
 		##################################################
 		OGDMES_property = 'individualName'
 		tmp = fetchXMLValues(record,"gmd:contact/gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
-		json_record['individual_name'] = sanityFirst(tmp)
-		debug_output['17-OGDMES individualName'] = sanityFirst(tmp)
+		#sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
+		primary_vals = [] 
+		for value in tmp:
+			primary_vals.append(value)
+
+		if len(primary_vals):
+			json_record['individual_name'] = ','.join(primary_vals)
+			debug_output['17-OGDMES individualName'] = ','.join(primary_vals)
+		else:
+			debug_output['17-OGDMES individualName'] = '[NOT SUPPLIED]'
 
 		##### OGDMES-18 organisationName
 		##################################################
