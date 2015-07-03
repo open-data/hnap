@@ -658,10 +658,8 @@ def main():
 		# No test data but this XPATH bas been confirmed by Marie-Eve Martin @ NRCan
 		OGDMES_property = 'aggregateDataSetIdentifier'
 		tmp = fetchXMLValues(record,"gmd:identificationInfo/gmd:MD_DataIdentification/gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetIdentifier/gmd:MD_Identifier/gmd:code/gco:CharacterString")
-		sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property,tmp)
 
 		aggregateDataSetIdentifier_array = []
-
 		if tmp != None and len(tmp) > 0:
 			for aggregateDataSetIdentifier in tmp:
 				(primary,secondary) = aggregateDataSetIdentifier.strip().split(';')
