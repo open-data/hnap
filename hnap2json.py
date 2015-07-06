@@ -890,34 +890,72 @@ def main():
 		primary_vals = []
 		second_vals	= []
 
+		##### organizationName
 		OGDMES_subproperty = 'organizationName'
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
 			for value in tmp:
 				primary_vals.append(value)
-			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
-			#	primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
 			for value in tmp:
 				second_vals.append(value)
-			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
-			#	second_vals.append(sanityFirst(tmp))
 
+		##### contactInfo/CI_Contact/phone
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gco:CharacterString")
+		for value in tmp:
+			primary_vals.append(value)
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:voice/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		for value in tmp:
+			second_vals.append(value)
+
+		##### contactInfo/CI_Contact/address
+		OGDMES_subproperty = 'deliveryPoint'
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString")
+		for value in tmp:
+			primary_vals.append(value)
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		for value in tmp:
+			second_vals.append(value)
+		OGDMES_subproperty = 'city'
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gco:CharacterString")
+		for value in tmp:
+			primary_vals.append(value)
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		for value in tmp:
+			second_vals.append(value)
+		OGDMES_subproperty = 'administrativeArea'
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gco:CharacterString")
+		for value in tmp:
+			primary_vals.append(value)
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:administrativeArea/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		for value in tmp:
+			second_vals.append(value)
+		OGDMES_subproperty = 'postalCode'
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gco:CharacterString")
+		for value in tmp:
+			primary_vals.append(value)
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:postalCode/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		for value in tmp:
+			second_vals.append(value)
+		OGDMES_subproperty = 'country'
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gco:CharacterString")
+		for value in tmp:
+			primary_vals.append(value)
+		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:country/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
+		for value in tmp:
+			second_vals.append(value)
 		OGDMES_subproperty = 'electronicMailAddress'
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
 			for value in tmp:
 				primary_vals.append(value)
-			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_primary_lang,tmp):
-			#	primary_vals.append(sanityFirst(tmp))
 		tmp = fetchXMLValues(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
 			for value in tmp:
 				second_vals.append(value)
-			#if sanitySingle(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty+OGDMES_secondary_lang,tmp):
-			#	second_vals.append(sanityFirst(tmp))
 
+		##### role
 		OGDMES_subproperty = 'role'
 		tmp = fetchXMLAttribute(record,"gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode","codeListValue")
 		if sanityMandatory(OGDMES_fileIdentifier+','+OGDMES_property+'-'+OGDMES_subproperty,tmp):
